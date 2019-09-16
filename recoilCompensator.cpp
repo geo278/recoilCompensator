@@ -65,7 +65,9 @@ void g7() { // 230 ms gap
 		Sleep(10);
 	}
 }
+
 void alternator() {}
+
 void r301() { // 69 ms
 	double multiplier = 1.20;
 	int delay = 75;
@@ -135,11 +137,17 @@ void r99() {
 };
 
 void spitfire() {}
+
 void flatline() {}
+
 void hemlock() {}
+
 void prowler() {}
+
 void longbow() {}
+
 void wingman() {}
+
 void none() {
 	cout << a << endl;
 	while (1) {
@@ -152,7 +160,6 @@ void none() {
 
 int main() {
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)updateActiveWeapon, 0, 0, 0);
-
 	while (1) {
 		if (a == "g7") {
 			g7();
@@ -192,7 +199,6 @@ int main() {
 		}
 		Sleep(10);
 	}
-
 }
 
 

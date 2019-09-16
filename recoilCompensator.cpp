@@ -41,7 +41,7 @@ void moveMouse(double x, double y, double multiplier) {
 void g7() { // 230 ms gap
 	double multiplier = 1.6;
 	int delay = 195;
-	while (1) { // better solution: just make the g7 full auto using inserted clicks
+	while (1) { // consider using z key to break loop
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
 			cout << a << endl;
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click

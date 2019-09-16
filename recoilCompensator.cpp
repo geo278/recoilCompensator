@@ -9,14 +9,14 @@
 using namespace std;
 
 WeaponSelector weaponSelector;
-string a;
+string activeWeapon;
 double sensitivityInGame = 0.6;
 int screenWidth = 1920;
 int screenHeight = 1080;
 
 static void updateActiveWeapon(void) {
 	while (1) {
-		a = weaponSelector.activeWeapon; // new thread
+		activeWeapon = weaponSelector.activeWeapon; // new thread
 		Sleep(10);
 	}
 }
@@ -33,33 +33,33 @@ void timerTool() {
 	}
 }
 
-void moveMouse(double x, double y, double multiplier) {
-	mouse_event(MOUSEEVENTF_MOVE, (int)(x * sensitivityInGame * multiplier), (int)(y * sensitivityInGame * multiplier), 0, 0);
-	cout << "x: " << (x * sensitivityInGame * multiplier) << endl;
+void moveMouse(double x, double y, double calibrationFactor) {
+	mouse_event(MOUSEEVENTF_MOVE, (int)(x * sensitivityInGame * calibrationFactor), (int)(y * sensitivityInGame * calibrationFactor), 0, 0);
+	cout << "x: " << (x * sensitivityInGame * calibrationFactor) << endl;
 }
 
 void g7() { // 230 ms gap
-	double multiplier = 1.6;
+	double calibrationFactor = 1.6;
 	int delay = 195;
 	while (1) { // consider using z key to break loop
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
-			cout << a << endl;
+			cout << activeWeapon << endl;
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			moveMouse(0, 80, multiplier);
+			moveMouse(0, 80, calibrationFactor);
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			moveMouse(-10, 80, multiplier);
+			moveMouse(-10, 80, calibrationFactor);
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			moveMouse(25, 90, multiplier);
+			moveMouse(25, 90, calibrationFactor);
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(delay);
 		}
-		if (a != "g7") {
+		if (activeWeapon != "g7") {
 			break;
 		}
 		Sleep(10);
@@ -69,64 +69,64 @@ void g7() { // 230 ms gap
 void alternator() {}
 
 void r301() { // 69 ms
-	double multiplier = 1.20;
+	double calibrationFactor = 1.20;
 	int delay = 75;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
-			cout << a << endl;
-			moveMouse(-15, 70, multiplier);
+			cout << activeWeapon << endl;
+			moveMouse(-15, 70, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9, 80, multiplier);
+			moveMouse(-9, 80, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-25, 75, multiplier);
+			moveMouse(-25, 75, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 45, multiplier);
+			moveMouse(-8, 45, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 35, multiplier);
+			moveMouse(-8, 35, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 30, multiplier);
+			moveMouse(-8, 30, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 30, multiplier);
+			moveMouse(-8, 30, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-22, 20, multiplier);
+			moveMouse(-22, 20, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-25, 20, multiplier);
+			moveMouse(-25, 20, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-25, 15, multiplier);
+			moveMouse(-25, 15, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11, 10, multiplier);
+			moveMouse(-11, 10, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(13, 10, multiplier);
+			moveMouse(13, 10, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(45, 12, multiplier);
+			moveMouse(45, 12, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(42, 14, multiplier);
+			moveMouse(42, 14, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(35, 10, multiplier);
+			moveMouse(35, 10, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(35, 5, multiplier);
+			moveMouse(35, 5, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(23, -5, multiplier);
+			moveMouse(23, -5, calibrationFactor);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 		}
-		if (a != "r301") {
+		if (activeWeapon != "r301") {
 			break;
 		}
 		Sleep(10);
@@ -149,9 +149,9 @@ void longbow() {}
 void wingman() {}
 
 void none() {
-	cout << a << endl;
+	cout << activeWeapon << endl;
 	while (1) {
-		if (a != "none") {
+		if (activeWeapon != "none") {
 			break;
 		}
 		Sleep(100);
@@ -161,43 +161,19 @@ void none() {
 int main() {
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)updateActiveWeapon, 0, 0, 0);
 	while (1) {
-		if (a == "g7") {
-			g7();
+		switch(activeWeapon) {
+			case "g7" : g7();
+			case "alternator" : alternator();
+			case "r301" : r301();
+			case "r99" : r99();
+			case "spitfire" : spitfire();
+			case "flatline" : flatline();
+			case "hemlock" : hemlock();
+			case "prowler" : prowler();
+			case "longbow" : longbow();
+			case "wingman" : wingman();
+			case "none" : none();
 		}
-		else if (a == "alternator") {
-			alternator();
-		}
-		else if (a == "r301") {
-			r301();
-		}
-		else if (a == "r99") {
-			r99();
-		}
-		else if (a == "spitfire") {
-			spitfire();
-		}
-		else if (a == "flatline") {
-			flatline();
-		}
-		else if (a == "hemlock") {
-			hemlock();
-		}
-		else if (a == "prowler") {
-			prowler();
-		}
-		else if (a == "longbow") {
-			longbow();
-		}
-		else if (a == "wingman") {
-			wingman();
-		}
-		else if (a == "none") {
-			none();
-		}
-		else {
-			Sleep(20);
-		}
-		Sleep(10);
 	}
 }
 

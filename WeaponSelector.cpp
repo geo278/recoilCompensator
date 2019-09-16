@@ -2,13 +2,13 @@
 
 		string WeaponSelector::slot1;
 		string WeaponSelector::slot2;
-		bool WeaponSelector::slot1Active;
+		string WeaponSelector::activeSlot;
 		string WeaponSelector::activeWeapon;
 
 		WeaponSelector::WeaponSelector() {
-			slot1 = "g7";
-			slot2 = "r301";
-			slot1Active = true;
+			slot1 = "none";
+			slot2 = "none";
+			activeSlot = "none";
 			activeWeapon = slot1;
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackSlot, 0, 0, 0);
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackWeapon, 0, 0, 0);
@@ -18,29 +18,37 @@
 			while (1) {
 				if (GetAsyncKeyState('1') & 1)
 				{
-					slot1Active = true;
+					activeSlot = "slot1";
 					activeWeapon = slot1;
 					cout << "slot1 selected" << endl;
 				} 
 				else if (GetAsyncKeyState('2') & 1)
 				{
-					slot1Active = false;
+					activeSlot = "slot2";
 					activeWeapon = slot2;
 					cout << "slot2 selected" << endl;
+				}
+				else if (GetAsyncKeyState('3') & 1)
+				{
+					activeSlot = "none";
+					activeWeapon = "none";
+					cout << "none selected" << endl;
 				}
 				Sleep(10);
 			}
 		}
-		string WeaponSelector::selectWeapon(string weapon) {
-			if (slot1Active) {
+		void WeaponSelector::selectWeapon(string weapon) {
+			if (activeSlot == "slot1") {
 				slot1 = weapon;
 				activeWeapon = slot1;
 			}
-			else {
+			else if (activeSlot == "slot2") {
 				slot2 = weapon;
 				activeWeapon = slot2;
 			}
-			return activeWeapon;
+			else if (activeSlot == "none") {
+				activeWeapon = "none";
+			}
 		}
 		void WeaponSelector::trackWeapon(void) {
 			while (1) {

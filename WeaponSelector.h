@@ -8,12 +8,12 @@ class WeaponSelector {
 public:
 	static string slot1;
 	static string slot2;
-	static bool slot1Active;
+	static string activeSlot;
 	static string activeWeapon;
-public:
 	WeaponSelector();
+private:
 	static void trackSlot(void);
-	static string selectWeapon(string weapon);
+	static void selectWeapon(string weapon);
 	static void trackWeapon(void);
 };
 

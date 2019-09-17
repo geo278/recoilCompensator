@@ -69,7 +69,7 @@ void g7() {
 void alternator() {
 	double calibrationFactorX = 1.5;
 	double calibrationFactorY = 4;
-	int delay = 95;
+	int delay = 95; // try 93
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
@@ -382,7 +382,7 @@ void spitfire() {
 void flatline() {
 	double calibrationFactorX = 5;
 	double calibrationFactorY = 5;
-	int delay = 109; // needs testing
+	int delay = 99; // needs testing
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
@@ -454,11 +454,13 @@ void flatline() {
 
 void hemlock() {}
 
-void prowler() {}
+void prowler() { // remove conditional breaks, treat as 1 full auto loop per burst
+
+}
 
 void longbow() {}
 
-void wingman() {}
+void wingman() {} // consider adding fake downward recoil
 
 void none() {
 	cout << activeWeapon << endl;

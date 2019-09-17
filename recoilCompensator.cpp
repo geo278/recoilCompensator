@@ -33,13 +33,13 @@ void timerTool() {
 	}
 }
 
-void moveMouse(double x, double y, double calibrationFactor) {
-	mouse_event(MOUSEEVENTF_MOVE, (int)(x * sensitivityInGame * calibrationFactor), (int)(y * sensitivityInGame * calibrationFactor), 0, 0);
-	cout << "x: " << (x * sensitivityInGame * calibrationFactor) << endl;
+void moveMouse(double x, double y, double calibrationFactorX, double calibrationFactorY) {
+	mouse_event(MOUSEEVENTF_MOVE, (int)(x * sensitivityInGame * calibrationFactorX), (int)(y * sensitivityInGame * calibrationFactorY), 0, 0);
 }
 
 void g7() {
-	double calibrationFactor = 1.6;
+	double calibrationFactorX = 1.6;
+	double calibrationFactorY = 1.6;
 	int delay = 195;
 	while (1) { // consider using z key to break loop
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
@@ -47,15 +47,15 @@ void g7() {
 			Sleep(5);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			moveMouse(0, 80, calibrationFactor);
+			moveMouse(0, 80, calibrationFactorX, calibrationFactorY);
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			moveMouse(-10, 80, calibrationFactor);
+			moveMouse(-10, 80, calibrationFactorX, calibrationFactorY);
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			moveMouse(25, 90, calibrationFactor);
+			moveMouse(25, 90, calibrationFactorX, calibrationFactorY);
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(delay);
@@ -68,55 +68,56 @@ void g7() {
 }
 
 void alternator() { // TESTING REQUIRED
-	double calibrationFactor = 1.40;
-	int delay = 94;
+	double calibrationFactorX = 1.5;
+	double calibrationFactorY = 4;
+	int delay = 96;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
-			moveMouse(14, 24, calibrationFactor);
+			moveMouse(10, 24, calibrationFactorX, calibrationFactorY);
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			Sleep(90);
+			moveMouse(-10, 26, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11, 28, calibrationFactor);
+			moveMouse(12, 27, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(15, 22, calibrationFactor);
+			moveMouse(-13, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-13, 20, calibrationFactor);
+			moveMouse(8, 32, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(15, 23, calibrationFactor);
+			moveMouse(-7, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-18, 26, calibrationFactor);
+			moveMouse(9, 28, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(14, 26, calibrationFactor);
+			moveMouse(-10, 24, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21, 22, calibrationFactor);
+			moveMouse(-10, 22, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(8, 30, calibrationFactor);
+			moveMouse(-15, 22, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-15, 16, calibrationFactor);
+			moveMouse(-15, 18, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(19, 17, calibrationFactor);
+			moveMouse(-15, 10, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21, 9, calibrationFactor);
+			moveMouse(-15, 6, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(12, 14, calibrationFactor);
+			moveMouse(-15, 6, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-15, 12, calibrationFactor);
-			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-			Sleep(delay);
-			moveMouse(20, 30, calibrationFactor);
+			moveMouse(0, 6, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 		}
@@ -128,61 +129,62 @@ void alternator() { // TESTING REQUIRED
 }
 
 void r301() {
-	double calibrationFactor = 1.20;
+	double calibrationFactorX = 1.20;
+	double calibrationFactorY = 1.20;
 	int delay = 75;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
-			moveMouse(-15, 70, calibrationFactor);
+			moveMouse(-15, 70, calibrationFactorX, calibrationFactorY);
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			Sleep(75);
+			moveMouse(-9, 80, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9, 80, calibrationFactor);
+			moveMouse(-25, 75, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-25, 75, calibrationFactor);
+			moveMouse(-8, 45, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 45, calibrationFactor);
+			moveMouse(-8, 35, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 35, calibrationFactor);
+			moveMouse(-8, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 30, calibrationFactor);
+			moveMouse(-8, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 30, calibrationFactor);
+			moveMouse(-22, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-22, 20, calibrationFactor);
+			moveMouse(-25, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-25, 20, calibrationFactor);
+			moveMouse(-25, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-25, 15, calibrationFactor);
+			moveMouse(-11, 10, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11, 10, calibrationFactor);
+			moveMouse(13, 10, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(13, 10, calibrationFactor);
+			moveMouse(45, 12, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(45, 12, calibrationFactor);
+			moveMouse(42, 14, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(42, 14, calibrationFactor);
+			moveMouse(35, 10, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(35, 10, calibrationFactor);
+			moveMouse(35, 5, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(35, 5, calibrationFactor);
-			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-			Sleep(delay);
-			moveMouse(23, -5, calibrationFactor);
+			moveMouse(23, -5, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 		}
@@ -194,61 +196,62 @@ void r301() {
 }
 
 void r99() { // TESTING REQUIRED
-	double calibrationFactor = 1.50;
+	double calibrationFactorX = 1.50;
+	double calibrationFactorY = 1.50;
 	int delay = 45;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
-			moveMouse(0, 25, calibrationFactor);
+			moveMouse(0, 25, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-13, 54, calibrationFactor);
+			moveMouse(-13, 54, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(30, 39, calibrationFactor);
+			moveMouse(30, 39, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-20, 64, calibrationFactor);
+			moveMouse(-20, 64, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11, 56, calibrationFactor);
+			moveMouse(-11, 56, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-33, 71, calibrationFactor);
+			moveMouse(-33, 71, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-27, 63, calibrationFactor);
+			moveMouse(-27, 63, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8, 58, calibrationFactor);
+			moveMouse(-8, 58, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(5, 41, calibrationFactor);
+			moveMouse(5, 41, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(14, 55, calibrationFactor);
+			moveMouse(14, 55, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(29, 45, calibrationFactor);
+			moveMouse(29, 45, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(13, 59, calibrationFactor);
+			moveMouse(13, 59, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(8, 33, calibrationFactor);
+			moveMouse(8, 33, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(4, 28, calibrationFactor);
+			moveMouse(4, 28, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-35, 9, calibrationFactor);
+			moveMouse(-35, 9, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-23, 0, calibrationFactor);
+			moveMouse(-23, 0, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-16, 16, calibrationFactor);
+			moveMouse(-16, 16, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 		}
@@ -260,111 +263,113 @@ void r99() { // TESTING REQUIRED
 };
 
 void spitfire() {
-	double calibrationFactor = 1.20;
+	double calibrationFactorX = 1.20;
+	double calibrationFactorY = 1.20;
 	int delay = 75;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
-			moveMouse(-11115, 70, calibrationFactor);
+			moveMouse(-11115, 70, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9111, 80, calibrationFactor);
+			moveMouse(-9111, 80, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21115, 75, calibrationFactor);
+			moveMouse(-21115, 75, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 45, calibrationFactor);
+			moveMouse(-1118, 45, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 35, calibrationFactor);
+			moveMouse(-1118, 35, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8111, 30, calibrationFactor);
+			moveMouse(-8111, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 30, calibrationFactor);
+			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactor);
+			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactor);
+			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactor);
+			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11115, 70, calibrationFactor);
+			moveMouse(-11115, 70, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9111, 80, calibrationFactor);
+			moveMouse(-9111, 80, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21115, 75, calibrationFactor);
+			moveMouse(-21115, 75, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 45, calibrationFactor);
+			moveMouse(-1118, 45, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 35, calibrationFactor);
+			moveMouse(-1118, 35, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8111, 30, calibrationFactor);
+			moveMouse(-8111, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 30, calibrationFactor);
+			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactor);
+			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactor);
+			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactor);
+			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11115, 70, calibrationFactor);
+			moveMouse(-11115, 70, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9111, 80, calibrationFactor);
+			moveMouse(-9111, 80, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21115, 75, calibrationFactor);
+			moveMouse(-21115, 75, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 45, calibrationFactor);
+			moveMouse(-1118, 45, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 35, calibrationFactor);
+			moveMouse(-1118, 35, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8111, 30, calibrationFactor);
+			moveMouse(-8111, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 30, calibrationFactor);
+			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactor);
+			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactor);
+			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactor);
+			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
+			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactor);
+			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactor);
+			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactor);
+			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 		}
@@ -398,19 +403,43 @@ void none() {
 int main() {
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)updateActiveWeapon, 0, 0, 0);
 	while (1) {
-		switch(activeWeapon) {
-			case "g7" : g7();
-			case "alternator" : alternator();
-			case "r301" : r301();
-			case "r99" : r99();
-			case "spitfire" : spitfire();
-			case "flatline" : flatline();
-			case "hemlock" : hemlock();
-			case "prowler" : prowler();
-			case "longbow" : longbow();
-			case "wingman" : wingman();
-			case "none" : none();
+		if (activeWeapon == "g7") {
+			g7();
 		}
+		else if (activeWeapon == "alternator") {
+			alternator();
+		}
+		else if (activeWeapon == "r301") {
+			r301();
+		}
+		else if (activeWeapon == "r99") {
+			r99();
+		}
+		else if (activeWeapon == "spitfire") {
+			spitfire();
+		}
+		else if (activeWeapon == "flatline") {
+			flatline();
+		}
+		else if (activeWeapon == "hemlock") {
+			hemlock();
+		}
+		else if (activeWeapon == "prowler") {
+			prowler();
+		}
+		else if (activeWeapon == "longbow") {
+			longbow();
+		}
+		else if (activeWeapon == "wingman") {
+			wingman();
+		}
+		else if (activeWeapon == "none") {
+			none();
+		}
+		else {
+			Sleep(20);
+		}
+		Sleep(10);
 	}
 	return 0;
 }

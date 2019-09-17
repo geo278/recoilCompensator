@@ -17,7 +17,7 @@ int screenHeight = 1080;
 static void updateActiveWeapon(void) {
 	while (1) {
 		activeWeapon = weaponSelector.activeWeapon; // new thread
-		Sleep(10);
+		Sleep(1);
 	}
 }
 void timerTool() {
@@ -63,7 +63,7 @@ void g7() {
 		if (activeWeapon != "g7") {
 			break;
 		}
-		Sleep(10);
+		Sleep(1);
 	}
 }
 
@@ -124,7 +124,7 @@ void alternator() {
 		if (activeWeapon != "alternator") {
 			break;
 		}
-		Sleep(10);
+		Sleep(1);
 	}
 }
 
@@ -191,7 +191,7 @@ void r301() {
 		if (activeWeapon != "r301") {
 			break;
 		}
-		Sleep(10);
+		Sleep(1);
 	}
 }
 
@@ -258,125 +258,125 @@ void r99() { // TESTING REQUIRED
 		if (activeWeapon != "r99") {
 			break;
 		}
-		Sleep(10);
+		Sleep(1);
 	}
 };
 
 void spitfire() {
-	double calibrationFactorX = 1.20;
-	double calibrationFactorY = 1.20;
-	int delay = 75;
+	double calibrationFactorX = 5.2;
+	double calibrationFactorY = 4.6;
+	int delay = 109;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
-			moveMouse(-11115, 70, calibrationFactorX, calibrationFactorY);
+			moveMouse(4, 28, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9111, 80, calibrationFactorX, calibrationFactorY);
+			moveMouse(3, 10, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21115, 75, calibrationFactorX, calibrationFactorY);
+			moveMouse(16, 19, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 45, calibrationFactorX, calibrationFactorY);
+			moveMouse(8, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 35, calibrationFactorX, calibrationFactorY);
+			moveMouse(11, 18, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8111, 30, calibrationFactorX, calibrationFactorY);
+			moveMouse(-1, 17, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
+			moveMouse(-8, 9, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(-14, -1, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(-7, -2, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
+			moveMouse(-5, 7, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11115, 70, calibrationFactorX, calibrationFactorY);
+			moveMouse(-5, 12, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9111, 80, calibrationFactorX, calibrationFactorY);
+			moveMouse(9, 4, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21115, 75, calibrationFactorX, calibrationFactorY);
+			moveMouse(17, 7, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 45, calibrationFactorX, calibrationFactorY);
+			moveMouse(7, 4, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 35, calibrationFactorX, calibrationFactorY);
+			moveMouse(16, -5, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8111, 30, calibrationFactorX, calibrationFactorY);
+			moveMouse(12, 0, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
+			moveMouse(4, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(9, 15, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(8, 8, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
+			moveMouse(10, 5, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-11115, 70, calibrationFactorX, calibrationFactorY);
+			moveMouse(10, 0, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-9111, 80, calibrationFactorX, calibrationFactorY);
+			moveMouse(1, 9, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21115, 75, calibrationFactorX, calibrationFactorY);
+			moveMouse(-8, 4, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 45, calibrationFactorX, calibrationFactorY);
+			moveMouse(-7, 4, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 35, calibrationFactorX, calibrationFactorY);
+			moveMouse(-15, 2, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-8111, 30, calibrationFactorX, calibrationFactorY);
+			moveMouse(-13, 3, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
+			moveMouse(-13, -8, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(-9, 9, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(-7, 7, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
+			moveMouse(-6, 3, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-1118, 30, calibrationFactorX, calibrationFactorY);
+			moveMouse(-6, 0, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-21112, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(-7, 0, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-111125, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(-5, 1, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(-211115, 15, calibrationFactorX, calibrationFactorY);
+			moveMouse(-4, 10, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 		}
-		if (activeWeapon != "r301") {
+		if (activeWeapon != "spitfire") {
 			break;
 		}
-		Sleep(10);
+		Sleep(1);
 	}
 }
 
@@ -396,7 +396,7 @@ void none() {
 		if (activeWeapon != "none") {
 			break;
 		}
-		Sleep(100);
+		Sleep(1);
 	}
 }
 
@@ -437,9 +437,9 @@ int main() {
 			none();
 		}
 		else {
-			Sleep(20);
+			Sleep(1);
 		}
-		Sleep(10);
+		Sleep(1);
 	}
 	return 0;
 }

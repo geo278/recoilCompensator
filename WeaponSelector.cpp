@@ -20,13 +20,13 @@
 				{
 					activeSlot = "slot1";
 					activeWeapon = slot1;
-					cout << "slot1 selected" << endl;
+					cout << "slot1 selected: " << slot1 << endl;
 				} 
 				else if (GetAsyncKeyState('2') & 1)
 				{
 					activeSlot = "slot2";
 					activeWeapon = slot2;
-					cout << "slot2 selected" << endl;
+					cout << "slot2 selected: " << slot2 << endl;
 				}
 				else if (GetAsyncKeyState('3') & 1)
 				{
@@ -34,7 +34,7 @@
 					activeWeapon = "none";
 					cout << "none selected" << endl;
 				}
-				Sleep(10);
+				Sleep(1);
 			}
 		}
 		void WeaponSelector::selectWeapon(string weapon) {
@@ -85,7 +85,7 @@
 				else if (GetAsyncKeyState(VK_F12) & 1) {
 					selectWeapon("none");
 				}
-				Sleep(10);
+				Sleep(1);
 			}
 		}
 

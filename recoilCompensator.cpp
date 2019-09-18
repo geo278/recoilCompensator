@@ -130,7 +130,7 @@ void alternator() {
 void r301() {
 	double calibrationFactorX = 1.20;
 	double calibrationFactorY = 1.20;
-	int delay = 74s;
+	int delay = 74;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
@@ -194,7 +194,7 @@ void r301() {
 	}
 }
 
-void r99() { // TESTING REQUIRED
+void r99() {
 	double calibrationFactorX = 1.70;
 	double calibrationFactorY = 1.40;
 	int delay = 45;
@@ -380,17 +380,17 @@ void spitfire() {
 }
 
 void flatline() {
-	double calibrationFactorX = 5;
-	double calibrationFactorY = 5;
-	int delay = 99; // needs testing
+	double calibrationFactorX = 4.8;
+	double calibrationFactorY = 4.8;
+	int delay = 99;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
-			moveMouse(3, 29, calibrationFactorX, calibrationFactorY);
+			moveMouse(3, 27, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(8, 3, calibrationFactorX, calibrationFactorY);
+			moveMouse(8, 5, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 			moveMouse(9, 23, calibrationFactorX, calibrationFactorY);
@@ -399,7 +399,7 @@ void flatline() {
 			moveMouse(6, 11, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(12, 20, calibrationFactorX, calibrationFactorY);
+			moveMouse(12, 18, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 			moveMouse(0, 14, calibrationFactorX, calibrationFactorY);
@@ -429,10 +429,10 @@ void flatline() {
 			moveMouse(16, 2, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(17, 5, calibrationFactorX, calibrationFactorY);
+			moveMouse(15, 5, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
-			moveMouse(11, -2, calibrationFactorX, calibrationFactorY);
+			moveMouse(8, -2, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			Sleep(delay);
 			moveMouse(7, 17, calibrationFactorX, calibrationFactorY);
@@ -452,10 +452,48 @@ void flatline() {
 	}
 }
 
-void hemlock() {}
+void hemlock() {
+	double calibrationFactorX = 10;
+	double calibrationFactorY = 10;
+	int delay = 66;
+	while (1) {
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+			cout << activeWeapon << endl;
+			Sleep(5);
+			moveMouse(0, 11, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+			moveMouse(0, 7, calibrationFactorX, calibrationFactorY);
+			Sleep(2 * delay);
+		}
+		if (activeWeapon != "hemlock") {
+			break;
+		}
+		Sleep(1);
+	}
+}
 
 void prowler() { // remove conditional breaks, treat as 1 full auto loop per burst
-
+	double calibrationFactorX = 10;
+	double calibrationFactorY = 12.5;
+	int delay = 50;
+	while (1) {
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+			cout << activeWeapon << endl;
+			Sleep(5);
+			moveMouse(0, 10, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+			moveMouse(1, 10, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+			moveMouse(1, 9, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+			moveMouse(0, 9, calibrationFactorX, calibrationFactorY);
+			Sleep(2 * delay);
+		}
+		if (activeWeapon != "prowler") {
+			break;
+		}
+		Sleep(1);
+	}
 }
 
 void longbow() {}

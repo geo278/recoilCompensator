@@ -515,39 +515,26 @@ int main() {
 	while (1) {
 		if (activeWeapon == "g7") {
 			g7();
-		}
-		else if (activeWeapon == "alternator") {
+		} else if (activeWeapon == "alternator") {
 			alternator();
-		}
-		else if (activeWeapon == "r301") {
+		} else if (activeWeapon == "r301") {
 			r301();
-		}
-		else if (activeWeapon == "r99") {
+		} else if (activeWeapon == "r99") {
 			r99();
-		}
-		else if (activeWeapon == "spitfire") {
+		} else if (activeWeapon == "spitfire") {
 			spitfire();
-		}
-		else if (activeWeapon == "flatline") {
+		} else if (activeWeapon == "flatline") {
 			flatline();
-		}
-		else if (activeWeapon == "hemlock") {
+		} else if (activeWeapon == "hemlock") {
 			hemlock();
-		}
-		else if (activeWeapon == "prowler") {
+		} else if (activeWeapon == "prowler") {
 			prowler();
-		}
-		else if (activeWeapon == "longbow") {
+		} else if (activeWeapon == "longbow") {
 			longbow();
-		}
-		else if (activeWeapon == "wingman") {
+		} else if (activeWeapon == "wingman") {
 			wingman();
-		}
-		else if (activeWeapon == "none") {
+		} else if (activeWeapon == "none") {
 			none();
-		}
-		else {
-			Sleep(1);
 		}
 		Sleep(1);
 	}

@@ -11,8 +11,8 @@ using namespace std;
 WeaponSelector weaponSelector;
 string activeWeapon;
 double sensitivityInGame = 0.6;
-int screenWidth = 1920;
-int screenHeight = 1080;
+// int screenWidth = 1920;
+// int screenHeight = 1080;
 
 static void updateActiveWeapon(void) {
 	while (1) {

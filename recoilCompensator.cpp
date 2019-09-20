@@ -54,10 +54,10 @@ void g7() {
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			moveMouse(25, 90, calibrationFactorX, calibrationFactorY);
-			Sleep(delay);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
-			Sleep(delay);
+			// moveMouse(25, 90, calibrationFactorX, calibrationFactorY);
+			// Sleep(delay);
+			// mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			// Sleep(delay);
 		}
 		if (activeWeapon != "g7") {
 			break;

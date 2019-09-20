@@ -16,20 +16,17 @@
 
 		void WeaponSelector::trackSlot(void) {
 			while (1) {
-				if (GetAsyncKeyState('1') & 1)
-				{
+				if (GetAsyncKeyState('1') & 1) {
 					activeSlot = "slot1";
 					activeWeapon = slot1;
 					cout << "slot1 selected: " << slot1 << endl;
 				} 
-				else if (GetAsyncKeyState('2') & 1)
-				{
+				else if (GetAsyncKeyState('2') & 1)	{
 					activeSlot = "slot2";
 					activeWeapon = slot2;
 					cout << "slot2 selected: " << slot2 << endl;
 				}
-				else if (GetAsyncKeyState('3') & 1)
-				{
+				else if ((GetAsyncKeyState('3') & 1) || (GetAsyncKeyState('E') & 1)) {
 					activeSlot = "none";
 					activeWeapon = "none";
 					cout << "none selected" << endl;

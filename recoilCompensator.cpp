@@ -457,7 +457,7 @@ void hemlock() {
 	double calibrationFactorY = 10;
 	int delay = 66;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouse(0, 11, calibrationFactorX, calibrationFactorY);
@@ -477,7 +477,7 @@ void prowler() { // remove conditional breaks, treat as 1 full auto loop per bur
 	double calibrationFactorY = 12.5;
 	int delay = 50;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouse(0, 10, calibrationFactorX, calibrationFactorY);
@@ -498,7 +498,24 @@ void prowler() { // remove conditional breaks, treat as 1 full auto loop per bur
 
 void longbow() {}
 
-void wingman() {} // consider adding fake downward recoil
+void wingman() {
+	double calibrationFactorX = 10;
+	double calibrationFactorY = 12.5;
+	while (1) {
+		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+			cout << activeWeapon << endl;
+			Sleep(5);
+			moveMouse(0, 60, calibrationFactorX, calibrationFactorY);
+			Sleep(245);
+			moveMouse(0, -60, calibrationFactorX, calibrationFactorY); //undo
+			Sleep(134);
+		}
+		if (activeWeapon != "wingman") {
+			break;
+		}
+		Sleep(1);
+	}
+} // consider adding fake downward recoil
 
 void none() {
 	cout << activeWeapon << endl;

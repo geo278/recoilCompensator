@@ -26,7 +26,7 @@
 					activeWeapon = slot2;
 					cout << "slot2 selected: " << slot2 << endl;
 				}
-				else if ((GetAsyncKeyState('3') & 1) || (GetAsyncKeyState('4') & 1) || (GetAsyncKeyState('E') & 1) || (GetAsyncKeyState(VK_ESCAPE) & 1)) {
+				else if ((GetAsyncKeyState('3') & 1) || (GetAsyncKeyState('4') & 1) || (GetAsyncKeyState('E') & 1) || (GetAsyncKeyState(VK_ESCAPE) & 1) || (GetAsyncKeyState(VK_TAB) & 1)) {
 					activeSlot = "none";
 					activeWeapon = "none";
 					cout << "none selected" << endl;

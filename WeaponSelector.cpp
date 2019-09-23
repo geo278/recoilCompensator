@@ -74,7 +74,7 @@
 					selectWeapon("prowler");
 				}
 				else if (GetAsyncKeyState(VK_F9) & 1) {
-					selectWeapon("longbow");
+					selectWeapon("insurgencyWeapon");
 				}
 				else if (GetAsyncKeyState(VK_F10) & 1) {
 					selectWeapon("wingman");

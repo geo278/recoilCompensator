@@ -10,7 +10,7 @@ using namespace std;
 
 WeaponSelector weaponSelector;
 string activeWeapon;
-double sensitivityInGame = 0.6;
+double sensitivityInGame = 0.75;
 // int screenWidth = 1920;
 // int screenHeight = 1080;
 
@@ -496,26 +496,34 @@ void prowler() { // remove conditional breaks, treat as 1 full auto loop per bur
 	}
 }
 
-void longbow() {}
-
-void wingman() {
-	double calibrationFactorX = 10;
-	double calibrationFactorY = 12.5;
+void insurgencyWeapon() { // F9
+	cout << activeWeapon << endl;
+	double calibrationFactorX = 0;
+	double calibrationFactorY = 2.7;
 	while (1) {
-		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
-			cout << activeWeapon << endl;
-			Sleep(5);
-			moveMouse(0, 60, calibrationFactorX, calibrationFactorY);
-			Sleep(245);
-			moveMouse(0, -60, calibrationFactorX, calibrationFactorY); //undo
-			Sleep(134);
+		bool firstShot = true;
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+			if (firstShot) {
+				for (int i = 0; i < 300; i++) {
+					moveMouse(0, 2.5, calibrationFactorX, calibrationFactorY);
+					if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+					Sleep(1);
+				}
+				firstShot = false;
+			}
+			moveMouse(0, 1.5, calibrationFactorX, calibrationFactorY);
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			Sleep(1);
 		}
-		if (activeWeapon != "wingman") {
+		if (activeWeapon != "insurgencyWeapon") {
 			break;
 		}
 		Sleep(1);
 	}
-} // consider adding fake downward recoil
+}
+
+void wingman() {
+}
 
 void none() {
 	cout << activeWeapon << endl;
@@ -546,8 +554,8 @@ int main() {
 			hemlock();
 		} else if (activeWeapon == "prowler") {
 			prowler();
-		} else if (activeWeapon == "longbow") {
-			longbow();
+		} else if (activeWeapon == "insurgencyWeapon") {
+			insurgencyWeapon();
 		} else if (activeWeapon == "wingman") {
 			wingman();
 		} else if (activeWeapon == "none") {

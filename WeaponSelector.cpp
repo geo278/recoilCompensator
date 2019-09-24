@@ -77,7 +77,7 @@
 					selectWeapon("insurgencyWeapon");
 				}
 				else if (GetAsyncKeyState(VK_F10) & 1) {
-					selectWeapon("wingman");
+					selectWeapon("gaussSAW");
 				}
 				else if (GetAsyncKeyState(VK_F12) & 1) {
 					selectWeapon("none");

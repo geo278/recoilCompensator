@@ -511,11 +511,11 @@ void insurgencyWeapon() { // F9
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			for (int i = 0; i < 3; i++) {
-				moveMouseSmoothly(100, 0, 250, calibrationFactorX, calibrationFactorY);
+				moveMouseSmoothly(100, 0, 340, calibrationFactorX, calibrationFactorY);
 				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			}
 			for (int i = 0; i < 20; i++) {
-				moveMouseSmoothly(100, 0, 150, calibrationFactorX, calibrationFactorY);
+				moveMouseSmoothly(100, 0, 240, calibrationFactorX, calibrationFactorY);
 				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			}
 			Sleep(1);
@@ -527,7 +527,38 @@ void insurgencyWeapon() { // F9
 	}
 }
 
-void wingman() {
+void gaussSAW() {
+	double calibrationFactorX = 1;
+	double calibrationFactorY = 4;
+	int delay = 115;
+	while (1) {
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+			cout << activeWeapon << endl;
+			Sleep(1);
+			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(10);
+			moveMouse(0, 70, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+
+			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(10);
+			moveMouse(0, 50, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+
+			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(10);
+			moveMouse(0, 50, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+
+			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(10);
+
+		}
+		if (activeWeapon != "gaussSAW") {
+			break;
+		}
+		Sleep(1);
+	}
 }
 
 void none() {
@@ -561,8 +592,8 @@ int main() {
 			prowler();
 		} else if (activeWeapon == "insurgencyWeapon") {
 			insurgencyWeapon();
-		} else if (activeWeapon == "wingman") {
-			wingman();
+		} else if (activeWeapon == "gaussSAW") {
+			gaussSAW();
 		} else if (activeWeapon == "none") {
 			none();
 		}

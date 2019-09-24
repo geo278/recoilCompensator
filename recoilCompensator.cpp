@@ -38,7 +38,7 @@ void moveMouse(double time, double x, double y, double calibrationFactorX, doubl
 	double dy = 3 * y / time;
 	for (int i = 0; i < time / 3; i += 3) {
 		mouse_event(MOUSEEVENTF_MOVE, (int)(dx * sensitivityInGame * calibrationFactorX), (int)(dy * sensitivityInGame * calibrationFactorY), 0, 0);
-		Sleep(3);
+		sleep(3);
 	}
 }
 
@@ -358,6 +358,7 @@ void hemlock() {
 			Sleep(5);
 			moveMouse(delay, 0, 11, calibrationFactorX, calibrationFactorY);
 			moveMouse(delay, 0, 7, calibrationFactorX, calibrationFactorY);
+			Sleep(2 * delay);
 		}
 		if (activeWeapon != "hemlock") {
 			break;
@@ -378,6 +379,7 @@ void prowler() { // remove conditional breaks, treat as 1 full auto loop per bur
 			moveMouse(delay, 1, 10, calibrationFactorX, calibrationFactorY);
 			moveMouse(delay, 1, 9, calibrationFactorX, calibrationFactorY);
 			moveMouse(delay, 0, 9, calibrationFactorX, calibrationFactorY);
+			Sleep(2 * delay);
 		}
 		if (activeWeapon != "prowler") {
 			break;
@@ -398,7 +400,7 @@ void insurgencyWeapon() { // F9
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			moveMouse(100, 0, 250, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0, i < 20, i++) {
 				moveMouse(100, 0, 150, calibrationFactorX, calibrationFactorY);
 				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			}

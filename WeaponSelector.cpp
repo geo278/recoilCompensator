@@ -74,10 +74,12 @@
 					selectWeapon("prowler");
 				}
 				else if (GetAsyncKeyState(VK_F9) & 1) {
-					selectWeapon("insurgencyWeapon");
+					// selectWeapon("insurgencyWeapon");
+					selectWeapon("m16a2");
 				}
 				else if (GetAsyncKeyState(VK_F10) & 1) {
-					selectWeapon("gaussSAW");
+					selectWeapon("m16a4");
+					//selectWeapon("gaussSAW");
 				}
 				else if (GetAsyncKeyState(VK_F12) & 1) {
 					selectWeapon("none");

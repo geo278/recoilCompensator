@@ -526,6 +526,44 @@ void insurgencyWeapon() { // F9
 		Sleep(1);
 	}
 }
+void m16a2() {
+	double calibrationFactorX = 5;
+	double calibrationFactorY = 13.7;
+	int delay = 155;
+	while (1) {
+		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
+			cout << activeWeapon << endl;
+			Sleep(5);
+			moveMouse(0, 60, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+			moveMouse(-2, 50, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+		}
+		if (activeWeapon != "m16a2") {
+			break;
+		}
+		Sleep(1);
+	}
+}
+void m16a4() {
+	double calibrationFactorX = 5;
+	double calibrationFactorY = 12.5;
+	int delay = 130;
+	while (1) {
+		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
+			cout << activeWeapon << endl;
+			Sleep(5);
+			moveMouse(0, 60, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+			moveMouse(0, 50, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+		}
+		if (activeWeapon != "m16a4") {
+			break;
+		}
+		Sleep(1);
+	}
+}
 
 void gaussSAW() {
 	double calibrationFactorX = 1;
@@ -592,6 +630,10 @@ int main() {
 			prowler();
 		} else if (activeWeapon == "insurgencyWeapon") {
 			insurgencyWeapon();
+		} else if (activeWeapon == "m16a2") {
+			m16a2();
+		} else if (activeWeapon == "m16a4") {
+			m16a4();
 		} else if (activeWeapon == "gaussSAW") {
 			gaussSAW();
 		} else if (activeWeapon == "none") {

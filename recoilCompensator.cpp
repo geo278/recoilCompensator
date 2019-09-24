@@ -393,16 +393,13 @@ void insurgencyWeapon() { // F9
 	double calibrationFactorX = 0;
 	double calibrationFactorY = 2.7;
 	while (1) {
-		bool firstShot = true;
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
-			if (firstShot) {
-					moveMouse(100, 0, 250, calibrationFactorX, calibrationFactorY);
-					if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-					moveMouse(100, 0, 250, calibrationFactorX, calibrationFactorY);
-					if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-					moveMouse(100, 0, 250, calibrationFactorX, calibrationFactorY);
-				}
-				firstShot = false;
+			moveMouse(100, 0, 250, calibrationFactorX, calibrationFactorY);
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			moveMouse(100, 0, 250, calibrationFactorX, calibrationFactorY);
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			moveMouse(100, 0, 250, calibrationFactorX, calibrationFactorY);
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			for (int i = 0, i < 20, i++) {
 				moveMouse(100, 0, 150, calibrationFactorX, calibrationFactorY);
 				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }

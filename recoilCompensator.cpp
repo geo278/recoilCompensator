@@ -36,6 +36,14 @@ void timerTool() {
 void moveMouse(double x, double y, double calibrationFactorX, double calibrationFactorY) {
 	mouse_event(MOUSEEVENTF_MOVE, (int)(x * sensitivityInGame * calibrationFactorX), (int)(y * sensitivityInGame * calibrationFactorY), 0, 0);
 }
+void moveMouseSmoothly(double time, double x, double y, double calibrationFactorX, double calibrationFactorY) {
+	double dx = x / time;
+	double dy = y / time;
+	for (int i = 0; i < time; i++) {
+		mouse_event(MOUSEEVENTF_MOVE, (int)(dx * sensitivityInGame * calibrationFactorX), (int)(dy * sensitivityInGame * calibrationFactorY), 0, 0);
+		Sleep(1);
+	}
+}
 
 void g7() {
 	double calibrationFactorX = 1.6;
@@ -54,10 +62,10 @@ void g7() {
 			Sleep(delay);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
-			// moveMouse(25, 90, calibrationFactorX, calibrationFactorY);
-			// Sleep(delay);
-			// mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
-			// Sleep(delay);
+			moveMouse(25, 90, calibrationFactorX, calibrationFactorY);
+			Sleep(delay);
+			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(delay);
 		}
 		if (activeWeapon != "g7") {
 			break;
@@ -501,18 +509,15 @@ void insurgencyWeapon() { // F9
 	double calibrationFactorX = 0;
 	double calibrationFactorY = 2.7;
 	while (1) {
-		bool firstShot = true;
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
-			if (firstShot) {
-				for (int i = 0; i < 300; i++) {
-					moveMouse(0, 2.5, calibrationFactorX, calibrationFactorY);
-					if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-					Sleep(1);
-				}
-				firstShot = false;
+			for (int i = 0; i < 3; i++) {
+				moveMouseSmoothly(100, 0, 250, calibrationFactorX, calibrationFactorY);
+				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			}
-			moveMouse(0, 1.5, calibrationFactorX, calibrationFactorY);
-			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			for (int i = 0; i < 20; i++) {
+				moveMouseSmoothly(100, 0, 150, calibrationFactorX, calibrationFactorY);
+				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			}
 			Sleep(1);
 		}
 		if (activeWeapon != "insurgencyWeapon") {

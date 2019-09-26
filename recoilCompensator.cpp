@@ -37,13 +37,18 @@ void moveMouse(double x, double y, double calibrationFactorX, double calibration
 	mouse_event(MOUSEEVENTF_MOVE, (int)(x * sensitivityInGame * calibrationFactorX), (int)(y * sensitivityInGame * calibrationFactorY), 0, 0);
 }
 void moveMouseSmoothly(double time, double x, double y, double calibrationFactorX, double calibrationFactorY) {
-	double dx = x / time;
-	double dy = y / time;
-	for (int i = 0; i < time; i++) {
+	double dx = 20 * x / time;
+	double dy = 20 * y / time;
+	double remainingTime = time;
+	for (int i = 0; i < time / 20; i++) {
 		mouse_event(MOUSEEVENTF_MOVE, (int)(dx * sensitivityInGame * calibrationFactorX), (int)(dy * sensitivityInGame * calibrationFactorY), 0, 0);
-		Sleep(1);
+
+		Sleep(20);
+		remainingTime -= 20;
 	}
+	Sleep(remainingTime);
 }
+
 
 void g7() {
 	double calibrationFactorX = 1.6;
@@ -511,7 +516,7 @@ void insurgencyWeapon() { // F9
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			for (int i = 0; i < 3; i++) {
-				moveMouseSmoothly(100, 0, 340, calibrationFactorX, calibrationFactorY);
+				moveMouseSmoothly(100, 0, 350, calibrationFactorX, calibrationFactorY);
 				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 			}
 			for (int i = 0; i < 20; i++) {

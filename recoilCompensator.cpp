@@ -41,12 +41,14 @@ void moveMouseSmoothly(double time, double x, double y, double calibrationFactor
 	double dy = 20 * y / time;
 	double remainingTime = time;
 	for (int i = 0; i < time / 20; i++) {
+		cout << "iteration" << endl;
 		mouse_event(MOUSEEVENTF_MOVE, (int)(dx * sensitivityInGame * calibrationFactorX), (int)(dy * sensitivityInGame * calibrationFactorY), 0, 0);
-
 		Sleep(20);
 		remainingTime -= 20;
 	}
-	Sleep(remainingTime);
+	if (remainingTime > 0) {
+		Sleep(remainingTime);
+	}
 }
 
 

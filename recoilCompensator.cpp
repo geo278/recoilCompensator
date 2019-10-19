@@ -55,12 +55,15 @@ void ps2ESF() {
 	double calibrationFactorY = 0.025;
 	int delay = 13;
 	while (1) {
+		mouse_event(MOUSEEVENTF_MOVE, 0, 1, 0, 0);
+		Sleep(30);
+	}
+	while (1) {
 		if (((GetKeyState(VK_SHIFT) & 0x100) != 0) && (((GetKeyState(VK_SPACE) & 0x100) != 0))) { // while lmb pressed, do 1 full mag loop
 			moveMouseSmoothly(delay, 0, 60, calibrationFactorX, calibrationFactorY);
 		} else if ((GetKeyState(VK_SPACE) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
 			moveMouseSmoothly(delay, 0, 40, calibrationFactorX, calibrationFactorY);
 		}
-
 		if (activeWeapon != "ps2ESF") {
 			break;
 		}
@@ -421,16 +424,22 @@ void prowler() { // remove conditional breaks, treat as 1 full auto loop per bur
 void insurgencyWeapon() { // F9
 	cout << activeWeapon << endl;
 	double calibrationFactorX = 0;
-	double calibrationFactorY = 1.85;
+	double calibrationFactorY = 4;
+	bool firstShots = true;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
+			// mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(10);
-			moveMouseSmoothly(200, 0, 80, calibrationFactorX, calibrationFactorY);
+			while (firstShots) {
+				moveMouseSmoothly(200, 0, 185, calibrationFactorX, calibrationFactorY);
+				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+				moveMouseSmoothly(200, 0, 180, calibrationFactorX, calibrationFactorY);
+				firstShots = false;
+			}
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			moveMouseSmoothly(200, 0, 135, calibrationFactorX, calibrationFactorY);
 		}
-		if (activeWeapon != "insurgencyWeapon") {
-			break;
-		}
+		firstShots = true;
 		Sleep(1);
 	}
 }

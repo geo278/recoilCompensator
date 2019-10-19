@@ -27,10 +27,10 @@
 					cout << "slot2 selected: " << slot2 << endl;
 				}
 				else if (
-						// (GetAsyncKeyState('3') & 1) || 
-						// (GetAsyncKeyState('4') & 1) || 
-						// ((GetAsyncKeyState('E') & 1) && activeWeapon != "insurgencyWeapon") || 
-						// (GetAsyncKeyState(VK_ESCAPE) & 1) || 
+						(GetAsyncKeyState('3') & 1) || 
+						(GetAsyncKeyState('4') & 1) || 
+						((GetAsyncKeyState('E') & 1) && activeWeapon != "insurgencyWeapon") || 
+						(GetAsyncKeyState(VK_ESCAPE) & 1) || 
 						(GetAsyncKeyState(VK_TAB) & 1) ) {
 					activeSlot = "none";
 					activeWeapon = "none";
@@ -80,7 +80,8 @@
 					selectWeapon("prowler");
 				}
 				else if (GetAsyncKeyState(VK_F9) & 1) {
-					selectWeapon("krunkerMarksman");
+					selectWeapon("insurgencyWeapon");
+					// selectWeapon("krunkerMarksman");
 					// selectWeapon("m16a2");
 				}
 				else if (GetAsyncKeyState(VK_F10) & 1) {

@@ -26,7 +26,12 @@
 					activeWeapon = slot2;
 					cout << "slot2 selected: " << slot2 << endl;
 				}
-				else if ((GetAsyncKeyState('3') & 1) || (GetAsyncKeyState('4') & 1) || (GetAsyncKeyState('E') & 1) || (GetAsyncKeyState(VK_ESCAPE) & 1) || (GetAsyncKeyState(VK_TAB) & 1)) {
+				else if (
+						// (GetAsyncKeyState('3') & 1) || 
+						// (GetAsyncKeyState('4') & 1) || 
+						// ((GetAsyncKeyState('E') & 1) && activeWeapon != "insurgencyWeapon") || 
+						// (GetAsyncKeyState(VK_ESCAPE) & 1) || 
+						(GetAsyncKeyState(VK_TAB) & 1) ) {
 					activeSlot = "none";
 					activeWeapon = "none";
 					cout << "none selected" << endl;
@@ -50,7 +55,8 @@
 		void WeaponSelector::trackWeapon(void) {
 			while (1) {
 				if (GetAsyncKeyState(VK_F1) & 1) {
-					selectWeapon("g7");
+					//selectWeapon("g7");
+					selectWeapon("ps2ESF"); 
 				}
 				else if (GetAsyncKeyState(VK_F2) & 1) {
 					selectWeapon("alternator");
@@ -74,7 +80,7 @@
 					selectWeapon("prowler");
 				}
 				else if (GetAsyncKeyState(VK_F9) & 1) {
-					selectWeapon("insurgencyWeapon");
+					selectWeapon("krunkerMarksman");
 					// selectWeapon("m16a2");
 				}
 				else if (GetAsyncKeyState(VK_F10) & 1) {

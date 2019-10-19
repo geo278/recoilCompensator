@@ -1,3 +1,1 @@
-﻿  recoilCompensator.cpp
-C:\Users\georg\CPSC\recoilCompensator\recoilCompensator.cpp(50,9): warning C4244:  'argument': conversion from 'double' to 'DWORD', possible loss of data
-  recoilCompensator.vcxproj -> C:\Users\georg\CPSC\recoilCompensator\Debug\recoilCompensator.exe
+﻿  recoilCompensator.vcxproj -> C:\Users\georg\CPSC\recoilCompensator\Debug\recoilCompensator.exe

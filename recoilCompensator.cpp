@@ -52,24 +52,15 @@ void moveMouseSmoothly(double time, double x, double y, double calibrationFactor
 void ps2ESF() {
 	double calibrationFactorX = 0;
 	double calibrationFactorY = 0.025;
-	int delay = 13;
-	while (1) {
-		mouse_event(MOUSEEVENTF_MOVE, 0, 1, 0, 0);
-		Sleep(30);
-	}
 	while (1) {
 		if (((GetKeyState(VK_SHIFT) & 0x100) != 0) && (((GetKeyState(VK_SPACE) & 0x100) != 0))) { //
-			moveMouseSmoothly(delay, 0, 60, calibrationFactorX, calibrationFactorY);
-		} else if ((GetKeyState(VK_SPACE) & 0x100) != 0) { //
-			moveMouseSmoothly(delay, 0, 40, calibrationFactorX, calibrationFactorY);
+			mouse_event(MOUSEEVENTF_MOVE, 0, 2, 0, 0);
+		} else { //
+			mouse_event(MOUSEEVENTF_MOVE, 0, 1, 0, 0);
 		}
-		if (activeWeapon != "ps2ESF") {
-			break;
-		}
-		Sleep(1);
+		Sleep(30);
 	}
 }
-
 
 void g7() {
 	double calibrationFactorX = 1.65;

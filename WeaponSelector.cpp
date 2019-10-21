@@ -29,7 +29,7 @@
 				else if (
 						(GetAsyncKeyState('3') & 1) || 
 						(GetAsyncKeyState('4') & 1) || 
-						((GetAsyncKeyState('E') & 1) && activeWeapon != "insurgencyWeapon") || 
+						(GetAsyncKeyState('E') & 1) || 
 						(GetAsyncKeyState(VK_ESCAPE) & 1) || 
 						(GetAsyncKeyState(VK_TAB) & 1) ) {
 					activeSlot = "none";
@@ -77,16 +77,18 @@
 					selectWeapon("hemlock");
 				}
 				else if (GetAsyncKeyState(VK_F8) & 1) {
-					selectWeapon("prowler");
+					selectWeapon("insurgencyBumpStock");
+					// selectWeapon("prowler");
 				}
 				else if (GetAsyncKeyState(VK_F9) & 1) {
-					selectWeapon("insurgencyWeapon");
+					selectWeapon("insurgencySemiAuto");
 					// selectWeapon("krunkerMarksman");
 					// selectWeapon("m16a2");
 				}
 				else if (GetAsyncKeyState(VK_F10) & 1) {
+					selectWeapon("insurgencyFullAuto");
 					// selectWeapon("m16a4");
-					selectWeapon("gaussSAW");
+					// selectWeapon("gaussSAW");
 				}
 				else if (GetAsyncKeyState(VK_F12) & 1) {
 					selectWeapon("none");

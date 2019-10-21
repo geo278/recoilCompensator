@@ -421,28 +421,6 @@ void prowler() { // remove conditional breaks, treat as 1 full auto loop per bur
 	}
 }
 
-void insurgencyWeapon() { // F9
-	cout << activeWeapon << endl;
-	double calibrationFactorX = 0;
-	double calibrationFactorY = 4;
-	bool firstShots = true;
-	while (1) {
-		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
-			// mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
-			Sleep(10);
-			while (firstShots) {
-				moveMouseSmoothly(200, 0, 185, calibrationFactorX, calibrationFactorY);
-				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-				moveMouseSmoothly(200, 0, 180, calibrationFactorX, calibrationFactorY);
-				firstShots = false;
-			}
-			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
-			moveMouseSmoothly(200, 0, 135, calibrationFactorX, calibrationFactorY);
-		}
-		firstShots = true;
-		Sleep(1);
-	}
-}
 void m16a2() {
 	double calibrationFactorX = 5;
 	double calibrationFactorY = 13.7;
@@ -540,6 +518,101 @@ void krunkerMarksman() {
 	}
 }
 
+static void performLayeredRecoilCompensation1(void) {
+	double calibrationFactorX = 0;
+	double calibrationFactorY = 6;
+	moveMouseSmoothly(40, 0, 40, calibrationFactorX, calibrationFactorY);
+	moveMouseSmoothly(55, 0, 15, calibrationFactorX, calibrationFactorY);
+	moveMouseSmoothly(125, 0, -28, calibrationFactorX, calibrationFactorY);
+}
+void insurgencySemiAuto() { // F9
+	cout << activeWeapon << endl;
+	while (1) {
+		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
+			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation1, 0, 0, 0);
+			while (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) {
+				Sleep(5);
+			}
+		}
+		Sleep(1);
+	}
+}
+
+void insurgencyFullAuto() { // F10
+	cout << activeWeapon << endl;
+	double calibrationFactorX = 0;
+	double calibrationFactorY = 4;
+	bool firstShots = true;
+	while (1) {
+		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
+			// mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(10);
+			while (firstShots) {
+				moveMouseSmoothly(200, 0, 185, calibrationFactorX, calibrationFactorY);
+				if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+				moveMouseSmoothly(200, 0, 180, calibrationFactorX, calibrationFactorY);
+				firstShots = false;
+			}
+			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
+			moveMouseSmoothly(200, 0, 135, calibrationFactorX, calibrationFactorY);
+		}
+		firstShots = true;
+		Sleep(1);
+	}
+}
+
+static void performLayeredRecoilCompensation2(void) { // 0, 7.3, 9, 11.8, 13.4, 16, 17.4, 18.6, 18.5, 16.8, 15.5, 14.4, 12.1
+	double calibrationFactorX = 0;
+	double calibrationFactorY = 15;
+	int delay = 16;
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(7.3 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(3.7 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(2.8 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(2.6 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(2.6 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.4 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.4 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-1.1 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-2 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-2 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-2 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-2.8 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+}
+void insurgencyBumpStock() { // F8
+	cout << activeWeapon << endl;
+	INPUT keyDown0;
+	keyDown0.type = INPUT_KEYBOARD;
+	keyDown0.ki.wScan = 0; // hardware scan code for key
+	keyDown0.ki.time = 0;
+	keyDown0.ki.dwExtraInfo = GetMessageExtraInfo();
+	keyDown0.ki.wVk = 0x30; // virtual-key code for the "a" key
+	keyDown0.ki.dwFlags = 0; // 0 for key press
+	INPUT keyUp0 = keyDown0;
+	keyUp0.ki.dwFlags = KEYEVENTF_KEYUP;
+	while (1) {
+		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
+			SendInput(1, &keyDown0, sizeof(INPUT));
+			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2, 0, 0, 0);
+			Sleep(5);
+			SendInput(1, &keyUp0, sizeof(INPUT));
+			Sleep(235);
+		}
+		Sleep(1);
+	}
+}
+
 void none() {
 	cout << activeWeapon << endl;
 	while (1) {
@@ -569,8 +642,12 @@ int main() {
 			hemlock();
 		} else if (activeWeapon == "prowler") {
 			prowler();
-		} else if (activeWeapon == "insurgencyWeapon") {
-			insurgencyWeapon();
+		} else if (activeWeapon == "insurgencySemiAuto") {
+			insurgencySemiAuto();
+		} else if (activeWeapon == "insurgencyFullAuto") {
+			insurgencyFullAuto(); 
+		} else if (activeWeapon == "insurgencyBumpStock") {
+			insurgencyBumpStock();
 		} else if (activeWeapon == "m16a2") {
 			m16a2();
 		} else if (activeWeapon == "m16a4") {

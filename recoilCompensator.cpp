@@ -1,5 +1,4 @@
 // recoilCompensator.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include "iostream"
 #include "Windows.h"
@@ -59,9 +58,9 @@ void ps2ESF() {
 		Sleep(30);
 	}
 	while (1) {
-		if (((GetKeyState(VK_SHIFT) & 0x100) != 0) && (((GetKeyState(VK_SPACE) & 0x100) != 0))) { // while lmb pressed, do 1 full mag loop
+		if (((GetKeyState(VK_SHIFT) & 0x100) != 0) && (((GetKeyState(VK_SPACE) & 0x100) != 0))) { //
 			moveMouseSmoothly(delay, 0, 60, calibrationFactorX, calibrationFactorY);
-		} else if ((GetKeyState(VK_SPACE) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		} else if ((GetKeyState(VK_SPACE) & 0x100) != 0) { //
 			moveMouseSmoothly(delay, 0, 40, calibrationFactorX, calibrationFactorY);
 		}
 		if (activeWeapon != "ps2ESF") {
@@ -76,7 +75,7 @@ void g7() {
 	double calibrationFactorX = 1.65;
 	double calibrationFactorY = 1.50;
 	int delay = 195;
-	while (1) { // consider using z key to break loop
+	while (1) { // consider using key to break loop
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
 			cout << activeWeapon << endl;
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
@@ -100,9 +99,9 @@ void g7() {
 void alternator() {
 	double calibrationFactorX = 1.5;
 	double calibrationFactorY = 3.6;
-	int delay = 95; // try 93
+	int delay = 95; //
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 10, 24, calibrationFactorX, calibrationFactorY);
@@ -148,7 +147,7 @@ void r301() {
 	double calibrationFactorY = 1.00;
 	int delay = 74;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, -15, 70, calibrationFactorX, calibrationFactorY);
@@ -198,7 +197,7 @@ void r99() {
 	double calibrationFactorY = 0.95;
 	int delay = 45;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 25, calibrationFactorX, calibrationFactorY);
@@ -248,7 +247,7 @@ void spitfire() {
 	double calibrationFactorY = 4.3;
 	int delay = 109;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 4, 28, calibrationFactorX, calibrationFactorY);
@@ -332,7 +331,7 @@ void flatline() {
 	double calibrationFactorY = 4.5;
 	int delay = 99;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 3, 27, calibrationFactorX, calibrationFactorY);
@@ -386,7 +385,7 @@ void hemlock() {
 	double calibrationFactorY = 8.8;
 	int delay = 66;
 	while (1) {
-		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 11, calibrationFactorX, calibrationFactorY);
@@ -400,12 +399,12 @@ void hemlock() {
 	}
 }
 
-void prowler() { // remove conditional breaks, treat as 1 full auto loop per burst
+void prowler() { //
 	double calibrationFactorX = 10;
 	double calibrationFactorY = 9;
 	int delay = 50;
 	while (1) {
-		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 10, calibrationFactorX, calibrationFactorY);
@@ -461,7 +460,7 @@ void gaussSAW() {
 	double calibrationFactorY = 3;
 	int delay = 115;
 	while (1) {
-		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // while lmb pressed, do 1 full mag loop
+		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
 			cout << activeWeapon << endl;
 			Sleep(1);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
@@ -497,16 +496,16 @@ void krunkerMarksman() {
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			moveMouseSmoothly(delay, 0, 70, calibrationFactorX, calibrationFactorY);
 
-			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); // Left click
+			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
 			Sleep(5);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			moveMouseSmoothly(delay, 0, 70, calibrationFactorX, calibrationFactorY);
-			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); // Left click
+			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
 			Sleep(5);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			moveMouseSmoothly(delay, 0, 70, calibrationFactorX, calibrationFactorY);
 
-			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); // Left click
+			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
 			Sleep(5);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			moveMouseSmoothly(delay, 0, -210, calibrationFactorX, calibrationFactorY);
@@ -528,7 +527,7 @@ static void performLayeredRecoilCompensation1(void) {
 void insurgencySemiAuto() { // F9
 	cout << activeWeapon << endl;
 	while (1) {
-		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
+		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation1, 0, 0, 0);
 			while (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) {
 				Sleep(5);
@@ -544,8 +543,7 @@ void insurgencyFullAuto() { // F10
 	double calibrationFactorY = 4;
 	bool firstShots = true;
 	while (1) {
-		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
-			// mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			Sleep(10);
 			while (firstShots) {
 				moveMouseSmoothly(200, 0, 185, calibrationFactorX, calibrationFactorY);
@@ -561,7 +559,7 @@ void insurgencyFullAuto() { // F10
 	}
 }
 
-static void performLayeredRecoilCompensation2(void) { // 0, 7.3, 9, 11.8, 13.4, 16, 17.4, 18.6, 18.5, 16.8, 15.5, 14.4, 12.1
+static void performLayeredRecoilCompensation2(void) { // F8
 	double calibrationFactorX = 0;
 	double calibrationFactorY = 15;
 	int delay = 16;
@@ -592,21 +590,21 @@ static void performLayeredRecoilCompensation2(void) { // 0, 7.3, 9, 11.8, 13.4, 
 }
 void insurgencyBumpStock() { // F8
 	cout << activeWeapon << endl;
-	INPUT keyDown0;
+	INPUT _0_keyDown;
 	keyDown0.type = INPUT_KEYBOARD;
-	keyDown0.ki.wScan = 0; // hardware scan code for key
+	keyDown0.ki.wScan = 0; // hardware scan code
 	keyDown0.ki.time = 0;
 	keyDown0.ki.dwExtraInfo = GetMessageExtraInfo();
-	keyDown0.ki.wVk = 0x30; // virtual-key code for the "a" key
-	keyDown0.ki.dwFlags = 0; // 0 for key press
-	INPUT keyUp0 = keyDown0;
+	keyDown0.ki.wVk = 0x30; // virtual-key code
+	keyDown0.ki.dwFlags = 0; // 0 for key down
+	INPUT _0_keyUp = keyDown0;
 	keyUp0.ki.dwFlags = KEYEVENTF_KEYUP;
 	while (1) {
-		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { // while lmb pressed, do 1 full mag loop
-			SendInput(1, &keyDown0, sizeof(INPUT));
+		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
+			SendInput(1, &_0_keyDown, sizeof(INPUT));
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2, 0, 0, 0);
-			Sleep(5);
-			SendInput(1, &keyUp0, sizeof(INPUT));
+			Sleep(4);
+			SendInput(1, &_0_keyUp, sizeof(INPUT));
 			Sleep(175);
 		}
 		Sleep(1);
@@ -665,15 +663,3 @@ int main() {
 	}
 	return 0;
 }
-
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

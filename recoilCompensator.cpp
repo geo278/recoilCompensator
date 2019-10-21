@@ -607,7 +607,7 @@ void insurgencyBumpStock() { // F8
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2, 0, 0, 0);
 			Sleep(5);
 			SendInput(1, &keyUp0, sizeof(INPUT));
-			Sleep(235);
+			Sleep(175);
 		}
 		Sleep(1);
 	}

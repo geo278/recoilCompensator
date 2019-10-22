@@ -594,9 +594,9 @@ void insurgencyBumpStock() { // F8
 		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			SendInput(1, &_0_keyDown, sizeof(INPUT));
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2, 0, 0, 0);
-			Sleep(1);
+			Sleep(20);
 			SendInput(1, &_0_keyUp, sizeof(INPUT));
-			Sleep(79);
+			Sleep(60);
 		}
 		Sleep(1);
 	}

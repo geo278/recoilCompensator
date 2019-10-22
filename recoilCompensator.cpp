@@ -582,21 +582,21 @@ static void performLayeredRecoilCompensation2(void) { // F8
 void insurgencyBumpStock() { // F8
 	cout << activeWeapon << endl;
 	INPUT _0_keyDown;
-	keyDown0.type = INPUT_KEYBOARD;
-	keyDown0.ki.wScan = 0; // hardware scan code
-	keyDown0.ki.time = 0;
-	keyDown0.ki.dwExtraInfo = GetMessageExtraInfo();
-	keyDown0.ki.wVk = 0x30; // virtual-key code
-	keyDown0.ki.dwFlags = 0; // 0 for key down
-	INPUT _0_keyUp = keyDown0;
-	keyUp0.ki.dwFlags = KEYEVENTF_KEYUP;
+	_0_keyDown.type = INPUT_KEYBOARD;
+	_0_keyDown.ki.wScan = 0; // hardware scan code
+	_0_keyDown.ki.time = 0;
+	_0_keyDown.ki.dwExtraInfo = GetMessageExtraInfo();
+	_0_keyDown.ki.wVk = 0x30; // virtual-key code
+	_0_keyDown.ki.dwFlags = 0; // 0 for key down
+	INPUT _0_keyUp = _0_keyDown;
+	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
 	while (1) {
 		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			SendInput(1, &_0_keyDown, sizeof(INPUT));
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2, 0, 0, 0);
-			Sleep(4);
+			Sleep(1);
 			SendInput(1, &_0_keyUp, sizeof(INPUT));
-			Sleep(175);
+			Sleep(79);
 		}
 		Sleep(1);
 	}

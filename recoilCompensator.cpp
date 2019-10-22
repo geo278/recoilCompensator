@@ -550,7 +550,7 @@ void insurgencyFullAuto() { // F10
 	}
 }
 
-static void performLayeredRecoilCompensation2(void) { // F8
+static void performLayeredRecoilCompensation2x762(void) {
 	double calibrationFactorX = 0;
 	double calibrationFactorY = 15;
 	int delay = 16;
@@ -593,10 +593,10 @@ void insurgencyBumpStock() { // F8
 	while (1) {
 		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			SendInput(1, &_0_keyDown, sizeof(INPUT));
-			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2, 0, 0, 0);
+			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2x762, 0, 0, 0);
 			Sleep(20);
 			SendInput(1, &_0_keyUp, sizeof(INPUT));
-			Sleep(60);
+			Sleep(160);
 		}
 		Sleep(1);
 	}

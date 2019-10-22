@@ -4,12 +4,14 @@ string WeaponSelector::slot1;
 string WeaponSelector::slot2;
 string WeaponSelector::activeSlot;
 string WeaponSelector::activeWeapon;
+bool WeaponSelector::useSlotSwitchKeybinds;
 
 WeaponSelector::WeaponSelector() {
 	slot1 = "none";
 	slot2 = "none";
 	activeSlot = "none";
 	activeWeapon = slot1;
+	useSlotSwitchKeybinds = true;
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackSlot, 0, 0, 0);
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackWeapon, 0, 0, 0);
 }
@@ -26,12 +28,12 @@ void WeaponSelector::trackSlot(void) {
 			activeWeapon = slot2;
 			cout << "slot2 selected: " << slot2 << endl;
 		}
-		else if (
+		else if (useSlotSwitchKeybinds && (
 				(GetAsyncKeyState('3') & 1) || 
 				(GetAsyncKeyState('4') & 1) || 
 				(GetAsyncKeyState('E') & 1) || 
 				(GetAsyncKeyState(VK_ESCAPE) & 1) || 
-				(GetAsyncKeyState(VK_TAB) & 1) ) {
+				(GetAsyncKeyState(VK_TAB) & 1)) ) {
 			activeSlot = "none";
 			activeWeapon = "none";
 			cout << "none selected" << endl;

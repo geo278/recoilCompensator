@@ -8,17 +8,10 @@
 using namespace std;
 
 WeaponSelector weaponSelector;
-string activeWeapon;
 double sensitivityInGame = 0.75;
 // int screenWidth = 1920;
 // int screenHeight = 1080;
 
-static void updateActiveWeapon(void) {
-	while (1) {
-		activeWeapon = weaponSelector.activeWeapon; // new thread
-		Sleep(1);
-	}
-}
 void timerTool() {
 	bool timed = false;
 	auto start = chrono::steady_clock::now();
@@ -50,6 +43,7 @@ void moveMouseSmoothly(double time, double x, double y, double calibrationFactor
 }
 
 void ps2ESF() {
+	weaponSelector.useSlotSwitchKeybinds = false;
 	double calibrationFactorX = 0;
 	double calibrationFactorY = 0.025;
 	while (1) {
@@ -68,7 +62,7 @@ void g7() {
 	int delay = 195;
 	while (1) { // consider using key to break loop
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(30);
 			moveMouseSmoothly(delay, 0, 80, calibrationFactorX, calibrationFactorY);
@@ -80,7 +74,7 @@ void g7() {
 			moveMouseSmoothly(delay, 25, 90, calibrationFactorX, calibrationFactorY);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 		}
-		if (activeWeapon != "g7") {
+		if (weaponSelector.activeWeapon != "g7") {
 			break;
 		}
 		Sleep(1);
@@ -93,7 +87,7 @@ void alternator() {
 	int delay = 95; //
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 10, 24, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
@@ -126,7 +120,7 @@ void alternator() {
 			moveMouseSmoothly(delay, 0, 6, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 		}
-		if (activeWeapon != "alternator") {
+		if (weaponSelector.activeWeapon != "alternator") {
 			break;
 		}
 		Sleep(1);
@@ -139,7 +133,7 @@ void r301() {
 	int delay = 74;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, -15, 70, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
@@ -176,7 +170,7 @@ void r301() {
 			moveMouseSmoothly(delay, 23, -5, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 		}
-		if (activeWeapon != "r301") {
+		if (weaponSelector.activeWeapon != "r301") {
 			break;
 		}
 		Sleep(1);
@@ -189,7 +183,7 @@ void r99() {
 	int delay = 45;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 25, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
@@ -226,7 +220,7 @@ void r99() {
 			moveMouseSmoothly(delay, -22, 0, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 		}
-		if (activeWeapon != "r99") {
+		if (weaponSelector.activeWeapon != "r99") {
 			break;
 		}
 		Sleep(1);
@@ -239,7 +233,7 @@ void spitfire() {
 	int delay = 109;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 4, 28, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
@@ -310,7 +304,7 @@ void spitfire() {
 			moveMouseSmoothly(delay, -4, 10, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 		}
-		if (activeWeapon != "spitfire") {
+		if (weaponSelector.activeWeapon != "spitfire") {
 			break;
 		}
 		Sleep(1);
@@ -323,7 +317,7 @@ void flatline() {
 	int delay = 99;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 3, 27, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
@@ -364,7 +358,7 @@ void flatline() {
 			moveMouseSmoothly(delay, 8, 8, calibrationFactorX, calibrationFactorY);
 			if ((GetKeyState(VK_LBUTTON) & 0x100) == 0) { break; }
 		}
-		if (activeWeapon != "flatline") {
+		if (weaponSelector.activeWeapon != "flatline") {
 			break;
 		}
 		Sleep(1);
@@ -377,13 +371,13 @@ void hemlock() {
 	int delay = 66;
 	while (1) {
 		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 11, calibrationFactorX, calibrationFactorY);
 			moveMouseSmoothly(delay, 0, 7, calibrationFactorX, calibrationFactorY);
 			Sleep(2 * delay);
 		}
-		if (activeWeapon != "hemlock") {
+		if (weaponSelector.activeWeapon != "hemlock") {
 			break;
 		}
 		Sleep(1);
@@ -396,7 +390,7 @@ void prowler() { //
 	int delay = 50;
 	while (1) {
 		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 10, calibrationFactorX, calibrationFactorY);
 			moveMouseSmoothly(delay, 1, 10, calibrationFactorX, calibrationFactorY);
@@ -404,7 +398,7 @@ void prowler() { //
 			moveMouseSmoothly(delay, 0, 9, calibrationFactorX, calibrationFactorY);
 			Sleep(2 * delay);
 		}
-		if (activeWeapon != "prowler") {
+		if (weaponSelector.activeWeapon != "prowler") {
 			break;
 		}
 		Sleep(1);
@@ -417,12 +411,12 @@ void m16a2() {
 	int delay = 155;
 	while (1) {
 		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 60, calibrationFactorX, calibrationFactorY);
 			moveMouseSmoothly(delay, -2, 50, calibrationFactorX, calibrationFactorY);
 		}
-		if (activeWeapon != "m16a2") {
+		if (weaponSelector.activeWeapon != "m16a2") {
 			break;
 		}
 		Sleep(1);
@@ -434,12 +428,12 @@ void m16a4() {
 	int delay = 130;
 	while (1) {
 		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) {
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(5);
 			moveMouseSmoothly(delay, 0, 60, calibrationFactorX, calibrationFactorY);
 			moveMouseSmoothly(delay, 0, 50, calibrationFactorX, calibrationFactorY);
 		}
-		if (activeWeapon != "m16a4") {
+		if (weaponSelector.activeWeapon != "m16a4") {
 			break;
 		}
 		Sleep(1);
@@ -452,7 +446,7 @@ void gaussSAW() {
 	int delay = 115;
 	while (1) {
 		while ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { //
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			Sleep(1);
 			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			Sleep(10);
@@ -470,7 +464,7 @@ void gaussSAW() {
 			Sleep(10);
 
 		}
-		if (activeWeapon != "gaussSAW") {
+		if (weaponSelector.activeWeapon != "gaussSAW") {
 			break;
 		}
 		Sleep(1);
@@ -483,7 +477,7 @@ void krunkerMarksman() {
 	int delay = 110;
 	while (1) {
 		if ((GetKeyState(VK_LBUTTON) & 0x100) != 0) { // if lmb pressed, do 4 round burst
-			cout << activeWeapon << endl;
+			cout << weaponSelector.activeWeapon << endl;
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			moveMouseSmoothly(delay, 0, 70, calibrationFactorX, calibrationFactorY);
 
@@ -501,7 +495,7 @@ void krunkerMarksman() {
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
 			moveMouseSmoothly(delay, 0, -210, calibrationFactorX, calibrationFactorY);
 		}
-		if (activeWeapon != "krunkerMarksman") {
+		if (weaponSelector.activeWeapon != "krunkerMarksman") {
 			break;
 		}
 		Sleep(1);
@@ -516,7 +510,8 @@ static void performLayeredRecoilCompensation1(void) {
 	moveMouseSmoothly(125, 0, -28, calibrationFactorX, calibrationFactorY);
 }
 void insurgencySemiAuto() { // F9
-	cout << activeWeapon << endl;
+	weaponSelector.useSlotSwitchKeybinds = false;
+	cout << weaponSelector.activeWeapon << endl;
 	while (1) {
 		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation1, 0, 0, 0);
@@ -529,7 +524,8 @@ void insurgencySemiAuto() { // F9
 }
 
 void insurgencyFullAuto() { // F10
-	cout << activeWeapon << endl;
+	weaponSelector.useSlotSwitchKeybinds = false;
+	cout << weaponSelector.activeWeapon << endl;
 	double calibrationFactorX = 0;
 	double calibrationFactorY = 4;
 	bool firstShots = true;
@@ -580,7 +576,8 @@ static void performLayeredRecoilCompensation2x762(void) {
 	Sleep(delay);
 }
 void insurgencyBumpStock() { // F8
-	cout << activeWeapon << endl;
+	weaponSelector.useSlotSwitchKeybinds = false;
+	cout << weaponSelector.activeWeapon << endl;
 	INPUT _0_keyDown;
 	_0_keyDown.type = INPUT_KEYBOARD;
 	_0_keyDown.ki.wScan = 0; // hardware scan code
@@ -594,18 +591,18 @@ void insurgencyBumpStock() { // F8
 		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			SendInput(1, &_0_keyDown, sizeof(INPUT));
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2x762, 0, 0, 0);
-			Sleep(20);
+			Sleep(90);
 			SendInput(1, &_0_keyUp, sizeof(INPUT));
-			Sleep(160);
+			Sleep(89);
 		}
 		Sleep(1);
 	}
 }
 
 void none() {
-	cout << activeWeapon << endl;
+	cout << weaponSelector.activeWeapon << endl;
 	while (1) {
-		if (activeWeapon != "none") {
+		if (weaponSelector.activeWeapon != "none") {
 			break;
 		}
 		Sleep(1);
@@ -615,39 +612,39 @@ void none() {
 int main() {
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)updateActiveWeapon, 0, 0, 0);
 	while (1) {
-		if (activeWeapon == "g7") {
+		if (weaponSelector.activeWeapon == "g7") {
 			g7();
-		} else if (activeWeapon == "alternator") {
+		} else if (weaponSelector.activeWeapon == "alternator") {
 			alternator();
-		} else if (activeWeapon == "r301") {
+		} else if (weaponSelector.activeWeapon == "r301") {
 			r301();
-		} else if (activeWeapon == "r99") {
+		} else if (weaponSelector.activeWeapon == "r99") {
 			r99();
-		} else if (activeWeapon == "spitfire") {
+		} else if (weaponSelector.activeWeapon == "spitfire") {
 			spitfire();
-		} else if (activeWeapon == "flatline") {
+		} else if (weaponSelector.activeWeapon == "flatline") {
 			flatline();
-		} else if (activeWeapon == "hemlock") {
+		} else if (weaponSelector.activeWeapon == "hemlock") {
 			hemlock();
-		} else if (activeWeapon == "prowler") {
+		} else if (weaponSelector.activeWeapon == "prowler") {
 			prowler();
-		} else if (activeWeapon == "insurgencySemiAuto") {
+		} else if (weaponSelector.activeWeapon == "insurgencySemiAuto") {
 			insurgencySemiAuto();
-		} else if (activeWeapon == "insurgencyFullAuto") {
+		} else if (weaponSelector.activeWeapon == "insurgencyFullAuto") {
 			insurgencyFullAuto(); 
-		} else if (activeWeapon == "insurgencyBumpStock") {
+		} else if (weaponSelector.activeWeapon == "insurgencyBumpStock") {
 			insurgencyBumpStock();
-		} else if (activeWeapon == "m16a2") {
+		} else if (weaponSelector.activeWeapon == "m16a2") {
 			m16a2();
-		} else if (activeWeapon == "m16a4") {
+		} else if (weaponSelector.activeWeapon == "m16a4") {
 			m16a4();
-		} else if (activeWeapon == "gaussSAW") {
+		} else if (weaponSelector.activeWeapon == "gaussSAW") {
 			gaussSAW();
-		} else if (activeWeapon == "krunkerMarksman") {
+		} else if (weaponSelector.activeWeapon == "krunkerMarksman") {
 			krunkerMarksman();
-		} else if (activeWeapon == "ps2ESF") {
+		} else if (weaponSelector.activeWeapon == "ps2ESF") {
 			ps2ESF();
-		} else if (activeWeapon == "none") {
+		} else if (weaponSelector.activeWeapon == "none") {
 			none();
 		}
 		Sleep(1);

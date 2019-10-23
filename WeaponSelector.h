@@ -10,7 +10,7 @@ public:
 	static string slot2;
 	static string activeSlot;
 	static string activeWeapon;
-	static bool WeaponSelector::useSlotSwitchKeybinds;
+	static bool useSlotSwitchKeybinds;
 	WeaponSelector();
 private:
 	static void trackSlot(void);

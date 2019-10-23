@@ -610,7 +610,6 @@ void none() {
 }
 
 int main() {
-	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)updateActiveWeapon, 0, 0, 0);
 	while (1) {
 		if (weaponSelector.activeWeapon == "g7") {
 			g7();

@@ -599,7 +599,7 @@ void insurgencyBumpStock() { // F8
 	}
 }
 
-void 1200rpmBumpStock() { // F7 delay 50ms
+void 1200rpmBumpStock() { // F7
 	weaponSelector.useSlotSwitchKeybinds = false;
 	cout << weaponSelector.activeWeapon << endl;
 	INPUT _0_keyDown;
@@ -614,8 +614,7 @@ void 1200rpmBumpStock() { // F7 delay 50ms
 	while (1) {
 		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && weaponSelector.toggleActive) { //
 			SendInput(1, &_0_keyDown, sizeof(INPUT));
-			// CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2x762, 0, 0, 0);
-			Sleep(40);
+			Sleep(39); // delay 50ms total
 			SendInput(1, &_0_keyUp, sizeof(INPUT));
 			Sleep(10);
 		}

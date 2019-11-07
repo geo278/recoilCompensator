@@ -5,6 +5,7 @@ string WeaponSelector::slot2;
 string WeaponSelector::activeSlot;
 string WeaponSelector::activeWeapon;
 bool WeaponSelector::useSlotSwitchKeybinds;
+bool toggleActive;
 
 WeaponSelector::WeaponSelector() {
 	slot1 = "none";
@@ -12,6 +13,7 @@ WeaponSelector::WeaponSelector() {
 	activeSlot = "none";
 	activeWeapon = slot1;
 	useSlotSwitchKeybinds = true;
+	toggleActive = true;
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackSlot, 0, 0, 0);
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackWeapon, 0, 0, 0);
 }
@@ -37,6 +39,9 @@ void WeaponSelector::trackSlot(void) {
 			activeSlot = "none";
 			activeWeapon = "none";
 			cout << "none selected" << endl;
+		}
+		if (!useSlotSwitchKeybinds && (GetAsyncKeyState(VK_MENU) & 1)) {
+			toggleActive = !toggleActive;
 		}
 		Sleep(1);
 	}
@@ -76,7 +81,8 @@ void WeaponSelector::trackWeapon(void) {
 			selectWeapon("flatline");
 		}
 		else if (GetAsyncKeyState(VK_F7) & 1) {
-			selectWeapon("hemlock");
+			selectWeapon("1200rpmBumpStock");
+			// selectWeapon("hemlock");
 		}
 		else if (GetAsyncKeyState(VK_F8) & 1) {
 			selectWeapon("insurgencyBumpStock");

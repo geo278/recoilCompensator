@@ -11,6 +11,7 @@ public:
 	static string activeSlot;
 	static string activeWeapon;
 	static bool useSlotSwitchKeybinds;
+	static bool toggleActive;
 	WeaponSelector();
 private:
 	static void trackSlot(void);

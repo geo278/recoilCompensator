@@ -513,7 +513,7 @@ void insurgencySemiAuto() { // F9
 	weaponSelector.useSlotSwitchKeybinds = false;
 	cout << weaponSelector.activeWeapon << endl;
 	while (1) {
-		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
+		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && weaponSelector.toggleActive) { //
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation1, 0, 0, 0);
 			while (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) {
 				Sleep(5);
@@ -530,7 +530,7 @@ void insurgencyFullAuto() { // F10
 	double calibrationFactorY = 4;
 	bool firstShots = true;
 	while (1) {
-		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
+		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && weaponSelector.toggleActive) { //
 			Sleep(10);
 			while (firstShots) {
 				moveMouseSmoothly(200, 0, 185, calibrationFactorX, calibrationFactorY);
@@ -588,12 +588,36 @@ void insurgencyBumpStock() { // F8
 	INPUT _0_keyUp = _0_keyDown;
 	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
 	while (1) {
-		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
+		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && weaponSelector.toggleActive) { //
 			SendInput(1, &_0_keyDown, sizeof(INPUT));
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2x762, 0, 0, 0);
 			Sleep(90);
 			SendInput(1, &_0_keyUp, sizeof(INPUT));
 			Sleep(89);
+		}
+		Sleep(1);
+	}
+}
+
+void 1200rpmBumpStock() { // F7 delay 50ms
+	weaponSelector.useSlotSwitchKeybinds = false;
+	cout << weaponSelector.activeWeapon << endl;
+	INPUT _0_keyDown;
+	_0_keyDown.type = INPUT_KEYBOARD;
+	_0_keyDown.ki.wScan = 0; // hardware scan code
+	_0_keyDown.ki.time = 0;
+	_0_keyDown.ki.dwExtraInfo = GetMessageExtraInfo();
+	_0_keyDown.ki.wVk = 0x30; // virtual-key code
+	_0_keyDown.ki.dwFlags = 0; // 0 for key down
+	INPUT _0_keyUp = _0_keyDown;
+	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
+	while (1) {
+		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && weaponSelector.toggleActive) { //
+			SendInput(1, &_0_keyDown, sizeof(INPUT));
+			// CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensation2x762, 0, 0, 0);
+			Sleep(40);
+			SendInput(1, &_0_keyUp, sizeof(INPUT));
+			Sleep(10);
 		}
 		Sleep(1);
 	}
@@ -643,6 +667,8 @@ int main() {
 			krunkerMarksman();
 		} else if (weaponSelector.activeWeapon == "ps2ESF") {
 			ps2ESF();
+		} else if (weaponSelector.activeWeapon == "1200rpmBumpStock") {
+			1200rpmBumpStock();
 		} else if (weaponSelector.activeWeapon == "none") {
 			none();
 		}

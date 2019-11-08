@@ -602,21 +602,12 @@ void insurgencyBumpStock() { // F8
 void bumpStock1200RPM() { // F7
 	weaponSelector.useSlotSwitchKeybinds = false;
 	cout << weaponSelector.activeWeapon << endl;
-	INPUT _0_keyDown;
-	_0_keyDown.type = INPUT_KEYBOARD;
-	_0_keyDown.ki.wScan = 0; // hardware scan code
-	_0_keyDown.ki.time = 0;
-	_0_keyDown.ki.dwExtraInfo = GetMessageExtraInfo();
-	_0_keyDown.ki.wVk = 0x30; // virtual-key code
-	_0_keyDown.ki.dwFlags = 0; // 0 for key down
-	INPUT _0_keyUp = _0_keyDown;
-	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
 	while (1) {
-		if (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && weaponSelector.toggleActive) { //
-			SendInput(1, &_0_keyDown, sizeof(INPUT));
-			Sleep(39); // delay 50ms total
-			SendInput(1, &_0_keyUp, sizeof(INPUT));
-			Sleep(10);
+		while (weaponSelector.toggleActive) { //
+			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
+			Sleep(25);
+			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(25);
 		}
 		Sleep(1);
 	}

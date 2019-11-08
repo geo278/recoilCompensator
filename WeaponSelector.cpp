@@ -13,7 +13,7 @@ WeaponSelector::WeaponSelector() {
 	activeSlot = "none";
 	activeWeapon = slot1;
 	useSlotSwitchKeybinds = true;
-	toggleActive = true;
+	toggleActive = false;
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackSlot, 0, 0, 0);
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackWeapon, 0, 0, 0);
 }
@@ -40,7 +40,7 @@ void WeaponSelector::trackSlot(void) {
 			activeWeapon = "none";
 			cout << "none selected" << endl;
 		}
-		if (!useSlotSwitchKeybinds && (GetAsyncKeyState(VK_MENU) & 1)) {
+		if (!useSlotSwitchKeybinds && (GetAsyncKeyState(0x50) & 1)) {
 			toggleActive = !toggleActive;
 			cout << "toggleActive: " << toggleActive << endl;
 		}

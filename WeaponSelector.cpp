@@ -40,9 +40,10 @@ void WeaponSelector::trackSlot(void) {
 			activeWeapon = "none";
 			cout << "none selected" << endl;
 		}
-		if (!useSlotSwitchKeybinds && (GetAsyncKeyState(0x50) & 1)) {
+		if (!useSlotSwitchKeybinds && (GetAsyncKeyState(0xBD) & 1)) { // activate using - key
 			toggleActive = !toggleActive;
 			cout << "toggleActive: " << toggleActive << endl;
+			Sleep(25);
 		}
 		Sleep(1);
 	}
@@ -82,7 +83,7 @@ void WeaponSelector::trackWeapon(void) {
 			selectWeapon("flatline");
 		}
 		else if (GetAsyncKeyState(VK_F7) & 1) {
-			selectWeapon("bumpStock1200RPM");
+			selectWeapon("bumpStock700RPM");
 			// selectWeapon("hemlock");
 		}
 		else if (GetAsyncKeyState(VK_F8) & 1) {

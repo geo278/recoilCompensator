@@ -599,15 +599,16 @@ void insurgencyBumpStock() { // F8
 	}
 }
 
-void bumpStock1200RPM() { // F7
+void bumpStock700RPM() { // F7
 	weaponSelector.useSlotSwitchKeybinds = false;
 	cout << weaponSelector.activeWeapon << endl;
 	while (1) {
 		while (weaponSelector.toggleActive) { //
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
-			Sleep(25);
+			//Sleep(10);
+			moveMouseSmoothly(43, -2, 15, 2, 2);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
-			Sleep(25);
+			Sleep(43);
 		}
 		Sleep(1);
 	}
@@ -657,8 +658,8 @@ int main() {
 			krunkerMarksman();
 		} else if (weaponSelector.activeWeapon == "ps2ESF") {
 			ps2ESF();
-		} else if (weaponSelector.activeWeapon == "bumpStock1200RPM") {
-			bumpStock1200RPM();
+		} else if (weaponSelector.activeWeapon == "bumpStock700RPM") {
+			bumpStock700RPM();
 		} else if (weaponSelector.activeWeapon == "none") {
 			none();
 		}

@@ -580,10 +580,10 @@ void insurgencyBumpStock() { // F8
 	cout << weaponSelector.activeWeapon << endl;
 	INPUT _0_keyDown;
 	_0_keyDown.type = INPUT_KEYBOARD;
-	_0_keyDown.ki.wScan = 0; // hardware scan code
+	_0_keyDown.ki.wScan = MapVirtualKey(VK_NUMPAD0, MAPVK_VK_TO_VSC); // hardware scan code
 	_0_keyDown.ki.time = 0;
-	_0_keyDown.ki.dwExtraInfo = GetMessageExtraInfo();
-	_0_keyDown.ki.wVk = 0x30; // virtual-key code
+	_0_keyDown.ki.wVk = VK_NUMPAD0; // virtual-key code
+	_0_keyDown.ki.dwExtraInfo = 0;
 	_0_keyDown.ki.dwFlags = 0; // 0 for key down
 	INPUT _0_keyUp = _0_keyDown;
 	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
@@ -602,29 +602,30 @@ void insurgencyBumpStock() { // F8
 static void performLayeredRecoilCompensationBF4(void) { // 2.8, 3.3,
 	//4.6, 4.5, 4.5, 4.2, 3.5, 3.3, 1.9, 1, 
 	double calibrationFactorX = 0;
-	double calibrationFactorY = 9.5;
+	double calibrationFactorY = 10;
 	int delay = 16;
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.7 * calibrationFactorY), 0, 0);
-	Sleep(delay);
+	Sleep(10);
 	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.8 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.9 * calibrationFactorY), 0, 0);
 	Sleep(delay);
 	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.0 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.3 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.1 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.3 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.3 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.4 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.8 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.4 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.7 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.6 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.7 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.6 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-1.0 * calibrationFactorY), 0, 0);
 	Sleep(delay);
-	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-1 * calibrationFactorY), 0, 0);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-1.2 * calibrationFactorY), 0, 0);
 	Sleep(delay);
 }
 void bumpStockBF4() { // F7
@@ -632,13 +633,13 @@ void bumpStockBF4() { // F7
 	cout << weaponSelector.activeWeapon << endl;
 	while (1) {
 		while (weaponSelector.toggleActive) { //
-		//if (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) { //
+		//if (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) { // for testing
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
 			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensationBF4, 0, 0, 0);
-			Sleep(47);
+			Sleep(51);
 			//moveMouseSmoothly(43, -2, 15, 2, 2);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
-			Sleep(46);
+			Sleep(50);
 		}
 		Sleep(1);
 	}

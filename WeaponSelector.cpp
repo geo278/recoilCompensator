@@ -83,7 +83,7 @@ void WeaponSelector::trackWeapon(void) {
 			selectWeapon("flatline");
 		}
 		else if (GetAsyncKeyState(VK_F7) & 1) {
-			selectWeapon("bumpStock700RPM");
+			selectWeapon("bumpStockBF4");
 			// selectWeapon("hemlock");
 		}
 		else if (GetAsyncKeyState(VK_F8) & 1) {

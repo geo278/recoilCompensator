@@ -599,16 +599,46 @@ void insurgencyBumpStock() { // F8
 	}
 }
 
-void bumpStock700RPM() { // F7
+static void performLayeredRecoilCompensationBF4(void) { // 2.8, 3.3,
+	//4.6, 4.5, 4.5, 4.2, 3.5, 3.3, 1.9, 1, 
+	double calibrationFactorX = 0;
+	double calibrationFactorY = 9.5;
+	int delay = 16;
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.7 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.8 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.0 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1.1 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(1 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(0.4 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.4 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.6 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-0.6 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+	mouse_event(MOUSEEVENTF_MOVE, 0, (int)(-1 * calibrationFactorY), 0, 0);
+	Sleep(delay);
+}
+void bumpStockBF4() { // F7
 	weaponSelector.useSlotSwitchKeybinds = false;
 	cout << weaponSelector.activeWeapon << endl;
 	while (1) {
 		while (weaponSelector.toggleActive) { //
+		//if (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) { //
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
-			//Sleep(10);
-			moveMouseSmoothly(43, -2, 15, 2, 2);
+			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensationBF4, 0, 0, 0);
+			Sleep(47);
+			//moveMouseSmoothly(43, -2, 15, 2, 2);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
-			Sleep(43);
+			Sleep(46);
 		}
 		Sleep(1);
 	}
@@ -658,8 +688,8 @@ int main() {
 			krunkerMarksman();
 		} else if (weaponSelector.activeWeapon == "ps2ESF") {
 			ps2ESF();
-		} else if (weaponSelector.activeWeapon == "bumpStock700RPM") {
-			bumpStock700RPM();
+		} else if (weaponSelector.activeWeapon == "bumpStockBF4") {
+			bumpStockBF4();
 		} else if (weaponSelector.activeWeapon == "none") {
 			none();
 		}

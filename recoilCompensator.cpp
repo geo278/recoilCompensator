@@ -635,11 +635,12 @@ void bumpStockBF4() { // F7
 		while (weaponSelector.toggleActive) { //
 		//if (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) { // for testing
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
-			CreateThread(0, 0, (LPTHREAD_START_ROUTINE)performLayeredRecoilCompensationBF4, 0, 0, 0);
-			Sleep(51);
-			//moveMouseSmoothly(43, -2, 15, 2, 2);
+			// moveMouseSmoothly(30, 0, 17, 2, 2); // QBU-88
+			// moveMouseSmoothly(30, 0, 19.5, 2, 2); // SVD-12
+			moveMouseSmoothly(30, 0, 38, 2, 2); // MK11 MOD 0
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
-			Sleep(50);
+			// Sleep(164); // 310 rpm
+			Sleep(201); // 260 rpm
 		}
 		Sleep(1);
 	}

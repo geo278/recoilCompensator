@@ -635,12 +635,19 @@ void bumpStockBF4() { // F7
 		while (weaponSelector.toggleActive) { //
 		//if (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) { // for testing
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
-			// moveMouseSmoothly(30, 0, 17, 2, 2); // QBU-88
+			moveMouseSmoothly(30, 1, 18, 2, 2); // QBB-95-1 LMG: 1X
+			// moveMouseSmoothly(30, 0, 20, 2, 2); // RPK-12 LMG: 2X IRNV
+			// moveMouseSmoothly(30, 0, 16, 2, 2); // U-100 MK5 LMG: 1X IRNV
+			// moveMouseSmoothly(30, 0, 17, 2, 2); // QBU-88: 1X IRNV
 			// moveMouseSmoothly(30, 0, 19.5, 2, 2); // SVD-12
-			moveMouseSmoothly(30, 0, 38, 2, 2); // MK11 MOD 0
+			// moveMouseSmoothly(30, 0, 38, 2, 2); // MK11 MOD 0
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0); // Left click
+			Sleep(63); // 650 rpm
+			// Sleep(70); // 600 rpm
+			// Sleep(72); // 590 rpm
 			// Sleep(164); // 310 rpm
-			Sleep(201); // 260 rpm
+			// Sleep(201); // 260 rpm
+			
 		}
 		Sleep(1);
 	}

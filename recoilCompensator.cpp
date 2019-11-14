@@ -635,7 +635,7 @@ void bumpStockBF4() { // F7
 		while (weaponSelector.toggleActive) { //
 		//if (((GetKeyState(VK_LBUTTON) & 0x100) != 0)) { // for testing
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //
-			moveMouseSmoothly(30, 1, 18, 2, 2); // QBB-95-1 LMG: 1X
+			moveMouseSmoothly(30, 1, 19, 2, 2); // QBB-95-1 LMG: 1X
 			// moveMouseSmoothly(30, 0, 20, 2, 2); // RPK-12 LMG: 2X IRNV
 			// moveMouseSmoothly(30, 0, 16, 2, 2); // U-100 MK5 LMG: 1X IRNV
 			// moveMouseSmoothly(30, 0, 17, 2, 2); // QBU-88: 1X IRNV

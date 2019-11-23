@@ -80,7 +80,8 @@ void WeaponSelector::trackWeapon(void) {
 			selectWeapon("spitfire");
 		}
 		else if (GetAsyncKeyState(VK_F6) & 1) {
-			selectWeapon("flatline");
+			selectWeapon("r6Burst"); 
+			// selectWeapon("flatline");
 		}
 		else if (GetAsyncKeyState(VK_F7) & 1) {
 			selectWeapon("bumpStockBF4");

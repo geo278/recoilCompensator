@@ -650,6 +650,30 @@ void bumpStockBF4() { // F7
 	}
 }
 
+void r6Burst() { // F7
+	weaponSelector.useSlotSwitchKeybinds = false;
+	cout << weaponSelector.activeWeapon << endl;
+	INPUT _0_keyDown;
+	_0_keyDown.type = INPUT_KEYBOARD;
+	_0_keyDown.ki.wScan = MapVirtualKey(VK_NUMPAD0, MAPVK_VK_TO_VSC); // hardware scan code
+	_0_keyDown.ki.time = 0;
+	_0_keyDown.ki.wVk = VK_NUMPAD0; // virtual-key code
+	_0_keyDown.ki.dwExtraInfo = 0;
+	_0_keyDown.ki.dwFlags = 0; // 0 for key down
+	INPUT _0_keyUp = _0_keyDown;
+	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
+	while (1) {
+		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
+			Sleep(10);
+			SendInput(1, &_0_keyDown, sizeof(INPUT));
+			mouse_event(MOUSEEVENTF_MOVE, 0, 20, 0, 0);
+			moveMouseSmoothly(150, 0, 35, 2, 2); // burst compensation
+			SendInput(1, &_0_keyUp, sizeof(INPUT));
+		}
+		Sleep(1);
+	}
+}
+
 void none() {
 	cout << weaponSelector.activeWeapon << endl;
 	while (1) {
@@ -696,6 +720,8 @@ int main() {
 			ps2ESF();
 		} else if (weaponSelector.activeWeapon == "bumpStockBF4") {
 			bumpStockBF4();
+		} else if (weaponSelector.activeWeapon == "r6Burst") {
+			r6Burst();
 		} else if (weaponSelector.activeWeapon == "none") {
 			none();
 		}

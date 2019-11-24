@@ -650,8 +650,7 @@ void bumpStockBF4() { // F7
 	}
 }
 
-void r6Burst() { // F7
-	weaponSelector.useSlotSwitchKeybinds = false;
+void r6BurstATK() { // F5
 	cout << weaponSelector.activeWeapon << endl;
 	INPUT _0_keyDown;
 	_0_keyDown.type = INPUT_KEYBOARD;
@@ -666,9 +665,63 @@ void r6Burst() { // F7
 		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
 			Sleep(10);
 			SendInput(1, &_0_keyDown, sizeof(INPUT));
-			mouse_event(MOUSEEVENTF_MOVE, 0, 20, 0, 0);
-			moveMouseSmoothly(150, 0, 35, 2, 2); // burst compensation
+			moveMouseSmoothly(105, 0, 28, 2, 2); // burst compensation
 			SendInput(1, &_0_keyUp, sizeof(INPUT));
+		}
+		if (weaponSelector.activeWeapon != "r6BurstATK") {
+			break;
+		}
+		Sleep(1);
+	}
+}
+void r6BurstDEF() { // F6
+	cout << weaponSelector.activeWeapon << endl;
+	INPUT _0_keyDown;
+	_0_keyDown.type = INPUT_KEYBOARD;
+	_0_keyDown.ki.wScan = MapVirtualKey(VK_NUMPAD0, MAPVK_VK_TO_VSC); // hardware scan code
+	_0_keyDown.ki.time = 0;
+	_0_keyDown.ki.wVk = VK_NUMPAD0; // virtual-key code
+	_0_keyDown.ki.dwExtraInfo = 0;
+	_0_keyDown.ki.dwFlags = 0; // 0 for key down
+	INPUT _0_keyUp = _0_keyDown;
+	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
+	while (1) {
+		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
+			Sleep(10);
+			SendInput(1, &_0_keyDown, sizeof(INPUT));
+			// mouse_event(MOUSEEVENTF_MOVE, 0, 15, 0, 0);
+			moveMouseSmoothly(105, 0, 18, 2, 2); // burst compensation
+			// moveMouseSmoothly(65, 0, 20, 2, 2); // rapid semi-auto
+			SendInput(1, &_0_keyUp, sizeof(INPUT));
+		}
+		if (weaponSelector.activeWeapon != "r6BurstDEF") {
+			break;
+		}
+		Sleep(1);
+	}
+}
+
+void r6LMGControl() { // F4
+	weaponSelector.useSlotSwitchKeybinds = false;
+	cout << weaponSelector.activeWeapon << endl;
+	INPUT _0_keyDown;
+	_0_keyDown.type = INPUT_KEYBOARD;
+	_0_keyDown.ki.wScan = MapVirtualKey(VK_NUMPAD0, MAPVK_VK_TO_VSC); // hardware scan code
+	_0_keyDown.ki.time = 0;
+	_0_keyDown.ki.wVk = VK_NUMPAD0; // virtual-key code
+	_0_keyDown.ki.dwExtraInfo = 0;
+	_0_keyDown.ki.dwFlags = 0; // 0 for key down
+	INPUT _0_keyUp = _0_keyDown;
+	_0_keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
+	while (1) {
+		while (((GetKeyState(VK_LBUTTON) & 0x100) != 0) && ((GetKeyState(VK_SHIFT) & 0x100) == 0)) { //
+			SendInput(1, &_0_keyDown, sizeof(INPUT));
+			Sleep(10);
+			// mouse_event(MOUSEEVENTF_MOVE, 0, 15, 0, 0);
+			moveMouseSmoothly(180, 0, 50, 2, 2); // burst compensation
+			// moveMouseSmoothly(10, 0, 5, 2, 2); // rapid semi-auto
+			SendInput(1, &_0_keyUp, sizeof(INPUT));
+			Sleep(100);
 		}
 		Sleep(1);
 	}
@@ -720,8 +773,12 @@ int main() {
 			ps2ESF();
 		} else if (weaponSelector.activeWeapon == "bumpStockBF4") {
 			bumpStockBF4();
-		} else if (weaponSelector.activeWeapon == "r6Burst") {
-			r6Burst();
+		} else if (weaponSelector.activeWeapon == "r6BurstATK") {
+			r6BurstATK();
+		} else if (weaponSelector.activeWeapon == "r6BurstDEF") {
+			r6BurstDEF();
+		} else if (weaponSelector.activeWeapon == "r6LMGControl") {
+			r6LMGControl();
 		} else if (weaponSelector.activeWeapon == "none") {
 			none();
 		}

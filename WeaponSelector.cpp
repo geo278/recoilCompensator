@@ -31,11 +31,12 @@ void WeaponSelector::trackSlot(void) {
 			cout << "slot2 selected: " << slot2 << endl;
 		}
 		else if (useSlotSwitchKeybinds && (
-				(GetAsyncKeyState('3') & 1) || 
-				(GetAsyncKeyState('4') & 1) || 
-				(GetAsyncKeyState('E') & 1) || 
-				(GetAsyncKeyState(VK_ESCAPE) & 1) || 
-				(GetAsyncKeyState(VK_TAB) & 1)) ) {
+				// (GetAsyncKeyState('3') & 1) || 
+				// (GetAsyncKeyState('4') & 1) || 
+				// (GetAsyncKeyState('E') & 1) || 
+				(GetAsyncKeyState(VK_ESCAPE) & 1) 
+				// (GetAsyncKeyState(VK_TAB) & 1)
+			)) {
 			activeSlot = "none";
 			activeWeapon = "none";
 			cout << "none selected" << endl;
@@ -74,13 +75,15 @@ void WeaponSelector::trackWeapon(void) {
 			selectWeapon("r301");
 		}
 		else if (GetAsyncKeyState(VK_F4) & 1) {
-			selectWeapon("r99");
+			selectWeapon("r6LMGControl");
+			// selectWeapon("r99");
 		}
 		else if (GetAsyncKeyState(VK_F5) & 1) {
-			selectWeapon("spitfire");
+			selectWeapon("r6BurstATK");
+			// selectWeapon("spitfire");
 		}
 		else if (GetAsyncKeyState(VK_F6) & 1) {
-			selectWeapon("r6Burst"); 
+			selectWeapon("r6BurstDEF"); 
 			// selectWeapon("flatline");
 		}
 		else if (GetAsyncKeyState(VK_F7) & 1) {

@@ -13,7 +13,7 @@ WeaponSelector::WeaponSelector() {
 	activeSlot = "none";
 	activeWeapon = slot1;
 	useSlotSwitchKeybinds = true;
-	toggleActive = false;
+	toggleActive = true;
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackSlot, 0, 0, 0);
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE) WeaponSelector::trackWeapon, 0, 0, 0);
 }
@@ -72,14 +72,15 @@ void WeaponSelector::trackWeapon(void) {
 			selectWeapon("alternator");
 		}
 		else if (GetAsyncKeyState(VK_F3) & 1) {
-			selectWeapon("r301");
+			selectWeapon("r6SMG11");
+			// selectWeapon("r301");
 		}
 		else if (GetAsyncKeyState(VK_F4) & 1) {
 			selectWeapon("r6LMGControl");
 			// selectWeapon("r99");
 		}
 		else if (GetAsyncKeyState(VK_F5) & 1) {
-			selectWeapon("r6BurstATK");
+			selectWeapon("r6HighCapacitySniper");
 			// selectWeapon("spitfire");
 		}
 		else if (GetAsyncKeyState(VK_F6) & 1) {

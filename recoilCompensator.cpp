@@ -52,7 +52,7 @@ void ps2ESF() {
 		} else { //
 			mouse_event(MOUSEEVENTF_MOVE, 0, 1, 0, 0);
 		}
-		Sleep(30);
+		Sleep(20);
 	}
 }
 
@@ -761,6 +761,7 @@ void none() {
 }
 
 int main() {
+	ps2ESF();
 	while (1) {
 		if (weaponSelector.activeWeapon == "g7") {
 			g7();
